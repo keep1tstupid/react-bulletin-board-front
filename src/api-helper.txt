@@ -1,0 +1,14 @@
+
+show all items >> ("/home")
+
+get all items >> ("/items")
+
+add new item >> ("/items")
+
+update item >> ("/items/{id}")
+
+get item by id >> ("/item/{id}")
+
+get item by type >> ("/items/{type}")
+
+delete item by id >> ("/items/{id}")
