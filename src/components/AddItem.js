@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from 'react';
+import { Container, Form, Button } from 'react-bootstrap';
 
 const AddItem = (props) => {
   const INITIAL_STATE = {
@@ -24,39 +25,54 @@ const AddItem = (props) => {
 
 
   return (
-    <div className="submit-form">
-        <div>
-          <div className="form-group">
-            <label htmlFor="title">Title</label>
-            <input
-              type="text"
-              className="form-control"
-              id="title"
-              required
-              value={item.title}
-              onChange={onEdit}
-              name="title"
-            />
-          </div>
+    <Container className={'mt-3 pl-0 pr-0'}>
+      <Form>
+        <Form.Group controlId="formTitle">
+          <Form.Label>Title: </Form.Label>
+          <Form.Control type="title" placeholder="Enter title" />
+          <Form.Text className="text-muted">
+            Keep your title short and descriptive.
+          </Form.Text>
+        </Form.Group>
 
-          <div className="form-group">
-            <label htmlFor="description">Description</label>
-            <input
-              type="text"
-              className="form-control"
-              id="description"
-              required
-              value={item.description}
-              onChange={onEdit}
-              name="description"
-            />
-          </div>
+        <Form.Group controlId="typeSelector">
+          <Form.Label>Type: </Form.Label>
+          <Form.Control as="select">
+            <option>lol</option>
+            <option>kek</option>
+            <option>pik</option>
+            <option>loh</option>
+            <option>hoh</option>
+          </Form.Control>
+        </Form.Group>
 
-          <button onClick={onAdd} className="btn btn-success">
-            Submit
-          </button>
-        </div>
-    </div>
+        <Form.Group controlId="textArea">
+          <Form.Label>Description: </Form.Label>
+          <Form.Control as="textarea" rows={3} />
+        </Form.Group>
+
+        <Form.Group>
+          <Form.File id="FormControlFile" label="Add file: " />
+        </Form.Group>
+
+        <Form.Group controlId="textAreaContact">
+          <Form.Label>Contact info: </Form.Label>
+          <Form.Control as="textarea" rows={2} />
+        </Form.Group>
+
+        <Form.Group>
+          <Form.Check
+            required
+            label="Agree to terms and conditions"
+            feedback="You must agree before submitting."
+          />
+        </Form.Group>
+
+        <Button type="submit">Submit form</Button> {' '}
+        <Button variant="outline-secondary">Cancel</Button>
+
+      </Form>
+    </Container>
   )
 }
 

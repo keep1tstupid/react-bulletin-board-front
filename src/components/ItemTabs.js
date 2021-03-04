@@ -1,11 +1,11 @@
-import React, { useState }  from 'react';
+import React from 'react';
 import { Container, Tabs, Tab, } from 'react-bootstrap';
 import ItemList from "./ItemList";
 
 const ItemTabs = (props) => {
 
   return (
-    <Container>
+    <Container className={'mt-3 pl-0 pr-0'}>
       <Tabs defaultActiveKey="all" id="tabs">
         <Tab eventKey="all" title="All items">
           <ItemList/>
