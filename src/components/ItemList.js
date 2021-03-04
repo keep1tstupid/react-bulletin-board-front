@@ -2,7 +2,7 @@ import React from 'react';
 import { useEffect } from 'react'
 import { connect, useDispatch } from 'react-redux';
 import { fetchAllItems } from "../redux/actions";
-import { Table, Container, } from 'react-bootstrap';
+import { Table, Container } from 'react-bootstrap';
 
 
 const ItemList = (props) => {
@@ -29,7 +29,9 @@ const ItemList = (props) => {
             {items.map(item => {
               return (
                 <tr key={item.id}>
-                  <td>{item.title}</td>
+                  <td>
+                    <a href="#">{item.title}</a>
+                  </td>
                   <td>{item.type}</td>
                   <td>{item.description}</td>
                 </tr>

@@ -12,8 +12,9 @@ const AddItem = (props) => {
   const [items, setItems] = useState([]);
   const [item, setItem] = useState(INITIAL_STATE);
 
-  const onDelete = (index) => {
-    setItems(items.filter((_, idx) => index !== idx))
+
+  const inputChanged = (event) => {
+    setItem({...item, [event.target.name]: event.target.value});
   };
 
   const onEdit = (index, item) => {
@@ -29,7 +30,14 @@ const AddItem = (props) => {
       <Form>
         <Form.Group controlId="formTitle">
           <Form.Label>Title: </Form.Label>
-          <Form.Control type="title" placeholder="Enter title" />
+          <Form.Control
+            type='text'
+            name='title'
+            placeholder='Enter title'
+            value={item.title}
+            onChange={inputChanged}
+            required
+          />
           <Form.Text className="text-muted">
             Keep your title short and descriptive.
           </Form.Text>
@@ -37,7 +45,10 @@ const AddItem = (props) => {
 
         <Form.Group controlId="typeSelector">
           <Form.Label>Type: </Form.Label>
-          <Form.Control as="select">
+          <Form.Control
+            as="select"
+            onChange={inputChanged}
+          >
             <option>lol</option>
             <option>kek</option>
             <option>pik</option>
@@ -48,7 +59,12 @@ const AddItem = (props) => {
 
         <Form.Group controlId="textArea">
           <Form.Label>Description: </Form.Label>
-          <Form.Control as="textarea" rows={3} />
+          <Form.Control
+            as="textarea"
+            rows={3}
+
+            onChange={inputChanged}
+          />
         </Form.Group>
 
         <Form.Group>
@@ -57,7 +73,13 @@ const AddItem = (props) => {
 
         <Form.Group controlId="textAreaContact">
           <Form.Label>Contact info: </Form.Label>
-          <Form.Control as="textarea" rows={2} />
+          <Form.Control
+            as='textarea'
+            rows={2}
+            name='contact'
+            value={item.contact}
+            onChange={inputChanged}
+          />
         </Form.Group>
 
         <Form.Group>
@@ -68,7 +90,7 @@ const AddItem = (props) => {
           />
         </Form.Group>
 
-        <Button type="submit">Submit form</Button> {' '}
+        <Button type="submit">Send to moderation</Button> {' '}
         <Button variant="outline-secondary">Cancel</Button>
 
       </Form>
