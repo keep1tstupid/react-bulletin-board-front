@@ -27,5 +27,3 @@ export const deleteItem = (id, data) => {
 export const deleteAll = () => {
   return http.delete(`/items`);
 }
-
-//export default ItemDataService;

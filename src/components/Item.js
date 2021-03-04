@@ -1,8 +1,13 @@
 import React from 'react';
 
-const Item = () => {
+const Item = (props) => {
+
   return (
-    <div></div>
+    <tr key={props.id}>
+        <td> {props.title} </td>
+        <td> {props.type} </td>
+        <td> {props.description} </td>
+    </tr>
   )
 }
 
