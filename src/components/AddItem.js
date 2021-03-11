@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, { useState } from 'react';
 import { Container, Form, Button } from 'react-bootstrap';
 import {connect, useDispatch} from "react-redux";
 import { addNewItem } from "../redux/actions";
