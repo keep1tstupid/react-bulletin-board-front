@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Table, Container } from 'react-bootstrap';
+import Item from "./Item";
 
 
 const ItemList = (props) => {
@@ -11,23 +12,14 @@ const ItemList = (props) => {
         <Table striped bordered hover >
           <thead>
             <tr>
-              <th width='30%'>Title</th>
+              <th width='20%'>Title</th>
               <th width='20%'>Type</th>
-              <th width='50%'>Description</th>
+              <th width='45%'>Description</th>
+              <th width='15%'></th>
             </tr>
           </thead>
           <tbody>
-            {items.map(item => {
-              return (
-                <tr key={item.id}>
-                  <td>
-                    <a href={`/items/${item.id}`} >{item.title}</a>
-                  </td>
-                  <td>{item.type}</td>
-                  <td>{item.description}</td>
-                </tr>
-              )
-            })}
+            {items.map(item => <Item {...item} key={item.id}/>)}
           </tbody>
         </Table>
       </Container>

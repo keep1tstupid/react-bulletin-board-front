@@ -2,15 +2,19 @@ import React, {useEffect, useState} from 'react';
 import { Container, Form, Button } from 'react-bootstrap';
 import {connect, useDispatch} from "react-redux";
 import { addNewItem } from "../redux/actions";
+import AuthService from "../services/auth.service";
 
 
 const AddItem = (props) => {
 
-  console.log(props);
+  //console.log(props);
+  const currentUser = AuthService.getCurrentUser();
+  console.log(currentUser);
 
   const INITIAL_STATE = {
+    author: currentUser.username,
     title: '',
-    type: '',
+    type: 'ADVERTISEMENT',
     description: '',
     attachment: '',
     contactInfo: '',
