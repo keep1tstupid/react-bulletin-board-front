@@ -1,11 +1,14 @@
 import React from 'react';
 import Header from "../components/Header";
-import ItemTabs from "../components/ItemTabs";
+import ItemDetails from "../components/ItemDetails";
 
 const ItemDetailsView = () => {
+
+
   return (
     <>
       <Header />
+      <ItemDetails />
     </>
   );
 }

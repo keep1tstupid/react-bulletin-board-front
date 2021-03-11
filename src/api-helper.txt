@@ -12,3 +12,5 @@ get item by id >> ("/item/{id}")
 get item by type >> ("/items/{type}")
 
 delete item by id >> ("/items/{id}")
+
+upload file >> ("/upload")

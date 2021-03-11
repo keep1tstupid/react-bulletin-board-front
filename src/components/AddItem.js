@@ -6,6 +6,7 @@ const AddItem = (props) => {
     title: '',
     type: '',
     description: '',
+    attachment: '',
     contact: '',
   }
 
@@ -28,7 +29,7 @@ const AddItem = (props) => {
   return (
     <Container className={'mt-3 pl-0 pr-0'}>
       <Form>
-        <Form.Group controlId="formTitle">
+        <Form.Group controlId='formTitle'>
           <Form.Label>Title: </Form.Label>
           <Form.Control
             type='text'
@@ -38,15 +39,16 @@ const AddItem = (props) => {
             onChange={inputChanged}
             required
           />
-          <Form.Text className="text-muted">
+          <Form.Text className='text-muted'>
             Keep your title short and descriptive.
           </Form.Text>
         </Form.Group>
 
-        <Form.Group controlId="typeSelector">
+        <Form.Group controlId='typeSelector'>
           <Form.Label>Type: </Form.Label>
           <Form.Control
-            as="select"
+            as='select'
+            name='type'
             onChange={inputChanged}
           >
             <option>lol</option>
@@ -57,21 +59,25 @@ const AddItem = (props) => {
           </Form.Control>
         </Form.Group>
 
-        <Form.Group controlId="textArea">
+        <Form.Group controlId='textArea'>
           <Form.Label>Description: </Form.Label>
           <Form.Control
-            as="textarea"
+            as='textarea'
             rows={3}
-
+            name='description'
             onChange={inputChanged}
           />
         </Form.Group>
 
         <Form.Group>
-          <Form.File id="FormControlFile" label="Add file: " />
+          <Form.File
+            id='FormControlFile'
+            label='Add file: '
+            name='attachment'
+          />
         </Form.Group>
 
-        <Form.Group controlId="textAreaContact">
+        <Form.Group controlId='textAreaContact'>
           <Form.Label>Contact info: </Form.Label>
           <Form.Control
             as='textarea'
@@ -82,16 +88,16 @@ const AddItem = (props) => {
           />
         </Form.Group>
 
-        <Form.Group>
-          <Form.Check
-            required
-            label="Agree to terms and conditions"
-            feedback="You must agree before submitting."
-          />
-        </Form.Group>
+        {/*<Form.Group>*/}
+        {/*  <Form.Check*/}
+        {/*    required*/}
+        {/*    label='Agree to terms and conditions'*/}
+        {/*    feedback='You must agree before submitting.'*/}
+        {/*  />*/}
+        {/*</Form.Group>*/}
 
-        <Button type="submit">Send to moderation</Button> {' '}
-        <Button variant="outline-secondary">Cancel</Button>
+        <Button type='submit'>Send to moderation</Button> {' '}
+        <Button variant='outline-secondary'>Cancel</Button>
 
       </Form>
     </Container>

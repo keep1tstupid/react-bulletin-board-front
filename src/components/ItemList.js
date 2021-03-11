@@ -13,6 +13,8 @@ const ItemList = (props) => {
     }
   }, [dispatch])
 
+
+
   const items = props.items || [];
   return (
     <div>
@@ -30,7 +32,7 @@ const ItemList = (props) => {
               return (
                 <tr key={item.id}>
                   <td>
-                    <a href="#">{item.title}</a>
+                    <a href={`/items/${item.id}`} >{item.title}</a>
                   </td>
                   <td>{item.type}</td>
                   <td>{item.description}</td>
