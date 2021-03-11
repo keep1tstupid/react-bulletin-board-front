@@ -1,37 +1,40 @@
 import React, {useEffect, useState} from 'react';
 import { Container, Form, Button } from 'react-bootstrap';
 import {connect, useDispatch} from "react-redux";
-import {fetchAllItemTypes} from "../redux/actions";
+import { addNewItem } from "../redux/actions";
+
 
 const AddItem = (props) => {
+
+  console.log(props);
 
   const INITIAL_STATE = {
     title: '',
     type: '',
     description: '',
     attachment: '',
-    contact: '',
+    contactInfo: '',
+    state: 'IN_MODERATION',
   }
 
-  const [items, setItems] = useState([]);
   const [item, setItem] = useState(INITIAL_STATE);
-
 
   const inputChanged = (event) => {
     setItem({...item, [event.target.name]: event.target.value});
   };
 
-  const onEdit = (index, item) => {
-    setItems(items.map((i, idx) => index === idx ? item : i))
-  };
+  const dispatch = useDispatch();
 
-  const onAdd = (newItem) => {
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    dispatch(addNewItem(item));
+    setItem(INITIAL_STATE);
+    props.history.push('/home');
   }
-
 
   return (
     <Container className={'mt-3 pl-0 pr-0'}>
-      <Form>
+      <Form onSubmit={handleSubmit}>
         <Form.Group controlId='formTitle'>
           <Form.Label>Title: </Form.Label>
           <Form.Control
@@ -54,7 +57,7 @@ const AddItem = (props) => {
             name='type'
             onChange={inputChanged}
           >
-            {props.types.map((type) => <option> {type} </option>) }
+            {props.types.map((type, index) => <option key={index}> {type} </option>) }
           </Form.Control>
         </Form.Group>
 
@@ -81,22 +84,14 @@ const AddItem = (props) => {
           <Form.Control
             as='textarea'
             rows={2}
-            name='contact'
-            value={item.contact}
+            name='contactInfo'
+            value={item.contactInfo}
             onChange={inputChanged}
           />
         </Form.Group>
 
-        {/*<Form.Group>*/}
-        {/*  <Form.Check*/}
-        {/*    required*/}
-        {/*    label='Agree to terms and conditions'*/}
-        {/*    feedback='You must agree before submitting.'*/}
-        {/*  />*/}
-        {/*</Form.Group>*/}
-
-        <Button type='submit'>Send to moderation</Button> {' '}
-        <Button variant='outline-secondary'>Cancel</Button>
+        <Button type='submit'> Send to moderation / Save </Button> {' '}
+        <Button variant='outline-secondary'> Cancel </Button>
 
       </Form>
     </Container>
@@ -104,9 +99,8 @@ const AddItem = (props) => {
 }
 
 
-
 export default connect(
   state => {
-    return { types: state.items.types }
+    return { types: state.items.types, }
   }, {}
 )(AddItem);

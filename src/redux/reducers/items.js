@@ -9,11 +9,9 @@ const itemReducer = (state = INITIAL_STATE, action) => {
     case 'ADD_FETCHED_ITEMS': {
       return { ...state, itemData: action.data };
     }
-    // ADD_FETCHED_TYPES
     case 'ADD_FETCHED_ITEM_TYPES': {
-      return { ...state, types: action.data }
+      return { ...state, types: action.data };
     }
-    // ADD_NEW_ITEM  { ...state, itemData: [newItem, ...state.itemData] }
     default: {
       return state;
     }

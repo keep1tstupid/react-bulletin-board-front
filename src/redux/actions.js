@@ -20,3 +20,9 @@ export const addFetchedItemTypes = (data) => ({
   type: 'ADD_FETCHED_ITEM_TYPES',
   data: data
 })
+
+// action for add new item
+export const addNewItem = (data) => ({
+  type: 'ADD_NEW_ITEM',
+  data: data
+})
