@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import LoginView from "./views/LoginView";
@@ -6,8 +6,14 @@ import HomeView from "./views/HomeView";
 import AddItemView from "./views/AddItemView";
 import ItemDetailsView from "./views/ItemDetailsView";
 import ModerateItemView from "./views/ModerateItemView";
+import {useDispatch} from "react-redux";
+import {fetchAllItemTypes} from "./redux/actions";
 
 function App() {
+  const dispatch = useDispatch()
+  useEffect(() => {
+    dispatch(fetchAllItemTypes());
+  }, [dispatch])
 
   return (
     <div className="App">

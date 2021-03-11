@@ -1,7 +1,10 @@
 import React, {useEffect, useState} from 'react';
 import { Container, Form, Button } from 'react-bootstrap';
+import {connect, useDispatch} from "react-redux";
+import {fetchAllItemTypes} from "../redux/actions";
 
 const AddItem = (props) => {
+
   const INITIAL_STATE = {
     title: '',
     type: '',
@@ -51,11 +54,7 @@ const AddItem = (props) => {
             name='type'
             onChange={inputChanged}
           >
-            <option>lol</option>
-            <option>kek</option>
-            <option>pik</option>
-            <option>loh</option>
-            <option>hoh</option>
+            {props.types.map((type) => <option> {type} </option>) }
           </Form.Control>
         </Form.Group>
 
@@ -104,4 +103,10 @@ const AddItem = (props) => {
   )
 }
 
-export default AddItem;
+
+
+export default connect(
+  state => {
+    return { types: state.items.types }
+  }, {}
+)(AddItem);

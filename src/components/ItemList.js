@@ -1,18 +1,9 @@
 import React from 'react';
-import { useEffect } from 'react'
-import { connect, useDispatch } from 'react-redux';
-import { fetchAllItems } from "../redux/actions";
+import { connect } from 'react-redux';
 import { Table, Container } from 'react-bootstrap';
 
 
 const ItemList = (props) => {
-  const dispatch = useDispatch()
-  useEffect(() => {
-    if (props.items.length === 0) {
-      dispatch(fetchAllItems());
-    }
-  }, [dispatch])
-
   const items = props.items || [];
   return (
     <div>
@@ -47,6 +38,5 @@ const ItemList = (props) => {
 export default connect(
   state => {
     return { items: state.items.itemData }
-  },
-  { fetchAllItems }
+  }, {}
 )(ItemList);

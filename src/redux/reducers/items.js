@@ -1,24 +1,19 @@
-import store from '../store';
-import { getAll } from "../../services/item.service";
-import {addFetchedItems} from "../actions";
 
 const INITIAL_STATE = {
-  itemData: []
+  itemData: [],
+  types: [],
 };
 
 const itemReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case 'FETCH_ALL_ITEMS': {
-      getAll()
-        .then(result => {
-          store.dispatch(addFetchedItems(result.data));
-        })
-        .catch(err => console.error(err))
-      return state;
-    }
     case 'ADD_FETCHED_ITEMS': {
-      return { itemData: action.data };
+      return { ...state, itemData: action.data };
     }
+    // ADD_FETCHED_TYPES
+    case 'ADD_FETCHED_ITEM_TYPES': {
+      return { ...state, types: action.data }
+    }
+    // ADD_NEW_ITEM  { ...state, itemData: [newItem, ...state.itemData] }
     default: {
       return state;
     }
@@ -26,3 +21,5 @@ const itemReducer = (state = INITIAL_STATE, action) => {
 }
 
 export default itemReducer;
+
+// https://github.com/reduxjs/reselect - to filter data by type and state
