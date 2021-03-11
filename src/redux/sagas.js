@@ -38,9 +38,19 @@ function* addNewItem(action) {
   }
 }
 
+// saga to delete item
+function* deleteItem(action) {
+  try {
+    yield call(http.delete, `/items/${action.data.id}`, action.data);
+    yield put(fetchAllItemsAction());
+  } catch (err) {
+    console.error(err);
+  }
+}
 
 export default function* mainSaga() {
   yield takeEvery('FETCH_ALL_ITEMS', fetchAllItems);
   yield takeEvery('FETCH_ALL_ITEM_TYPES', fetchAllItemTypes);
   yield takeEvery('ADD_NEW_ITEM', addNewItem);
+  yield takeEvery('DELETE_ITEM', deleteItem);
 }

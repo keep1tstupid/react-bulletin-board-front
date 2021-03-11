@@ -1,6 +1,8 @@
 import React, {useEffect, useState} from 'react';
 import { Button } from 'react-bootstrap';
 import AuthService from "../services/auth.service";
+import { deleteItem } from "../redux/actions";
+import {useDispatch} from "react-redux";
 
 
 const Item = (props) => {
@@ -15,12 +17,16 @@ const Item = (props) => {
 
   const [buttonsVisible, setButtonsVisible] = useState(false);
 
-  const handleEdit = () => {
 
+  const handleEdit = () => {
+    const url = '/items/' + props.id;
+    props.history.push(url);
   }
 
-  const handleDelete = () => {
+  const dispatch = useDispatch();
 
+  const handleDelete = () => {
+    dispatch(deleteItem(props));
   }
 
   return (

@@ -26,3 +26,9 @@ export const addNewItem = (data) => ({
   type: 'ADD_NEW_ITEM',
   data: data
 })
+
+// action to delete item
+export const deleteItem = (data) => ({
+  type: 'DELETE_ITEM',
+  data: data
+})
