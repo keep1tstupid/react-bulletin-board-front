@@ -1,10 +1,22 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { Container, Navbar, Nav, Form, Button} from 'react-bootstrap';
 import { Link } from "react-router-dom";
 import AuthService from "../services/auth.service";
 
 const Header = () => {
   const currentUser = AuthService.getCurrentUser();
+  useEffect(() => {
+    const currentRoles = currentUser.roles;
+    if (currentRoles.includes("ROLE_ADMIN") || currentRoles.includes("ROLE_MODERATOR")) {
+      setModerationAvailable(true);
+    }
+  }, [currentUser]);
+
+  const logOut = () => {
+    AuthService.logout();
+  };
+
+  const [moderationAvailable, setModerationAvailable] = useState(false);
 
   return (
     <div>
@@ -14,12 +26,13 @@ const Header = () => {
           <Nav className="mr-auto">
             <Nav.Link as={Link} to="/home">All items</Nav.Link>
             <Nav.Link as={Link} to="/add">Add new item</Nav.Link>
+            {moderationAvailable && (
             <Nav.Link as={Link} to="/moderation">Moderation</Nav.Link>
-            {/*<Nav.Link as={Link} to="/"></Nav.Link>*/}
+            )}
           </Nav>
           <Form inline>
             <Navbar.Text className="mr-sm-2"> {currentUser.username} </Navbar.Text>
-            <Button variant="outline-light" size="sm">Logout</Button>
+            <Button variant="outline-light" size="sm" href="/login" onClick={logOut}>Logout</Button>
           </Form>
         </Container>
       </Navbar>
