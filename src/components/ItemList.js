@@ -13,8 +13,6 @@ const ItemList = (props) => {
     }
   }, [dispatch])
 
-
-
   const items = props.items || [];
   return (
     <div>
@@ -52,4 +50,3 @@ export default connect(
   },
   { fetchAllItems }
 )(ItemList);
-

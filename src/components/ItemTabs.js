@@ -21,6 +21,4 @@ const ItemTabs = (props) => {
   )
 }
 
-// https://react-bootstrap.github.io/components/tabs/
-
 export default ItemTabs;
