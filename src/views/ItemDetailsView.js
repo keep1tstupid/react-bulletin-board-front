@@ -1,6 +1,6 @@
 import React from 'react';
 import Header from "../components/Header";
-import ItemDetails from "../components/ItemDetails";
+import ItemDetails from "../components/modals/ItemDetails";
 
 const ItemDetailsView = () => {
 

@@ -20,12 +20,11 @@ const Header = () => {
 
   return (
     <div>
-      <Navbar bg="primary" variant="dark">
+      <Navbar bg="dark" variant="dark">
         <Container className={'pl-1'}>
           <Navbar.Brand>BB</Navbar.Brand>
           <Nav className="mr-auto">
             <Nav.Link as={Link} to="/home">All items</Nav.Link>
-            <Nav.Link as={Link} to="/add">Add new item</Nav.Link>
             {moderationAvailable && (
             <Nav.Link as={Link} to="/moderation">Moderation</Nav.Link>
             )}

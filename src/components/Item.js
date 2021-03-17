@@ -41,13 +41,13 @@ const Item = (props) => {
           {buttonsVisible && (
             <>
               <Button
-                variant='secondary'
+                variant='outline-secondary'
                 onClick={handleEdit}>
                 Edit
               </Button>
               {' '}
               <Button
-              variant='danger'
+              variant='outline-danger'
               onClick={handleDelete}>
               Delete
               </Button>

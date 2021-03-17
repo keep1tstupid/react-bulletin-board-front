@@ -1,15 +1,19 @@
 import React, { useState } from 'react';
-import { Container, Form, Button } from 'react-bootstrap';
+import { Modal, Form, Button } from 'react-bootstrap';
 import {connect, useDispatch} from "react-redux";
-import { addNewItem } from "../redux/actions";
-import AuthService from "../services/auth.service";
+import { addNewItem } from "../../redux/actions";
+import AuthService from "../../services/auth.service";
 
 
 const AddItem = (props) => {
 
   //console.log(props);
   const currentUser = AuthService.getCurrentUser();
+  const [show, setShow] = useState(false);
   console.log(currentUser);
+
+
+  const handleShow = () => setShow(true);
 
   const INITIAL_STATE = {
     author: currentUser.username,
@@ -23,6 +27,11 @@ const AddItem = (props) => {
 
   const [item, setItem] = useState(INITIAL_STATE);
 
+  const handleClose = () => {
+    setShow(false);
+    setItem(INITIAL_STATE);
+  }
+
   const inputChanged = (event) => {
     setItem({...item, [event.target.name]: event.target.value});
   };
@@ -33,11 +42,26 @@ const AddItem = (props) => {
     event.preventDefault();
     dispatch(addNewItem(item));
     setItem(INITIAL_STATE);
-    props.history.push('/home');
+    handleClose();
   }
 
   return (
-    <Container className={'mt-3 pl-0 pr-0'}>
+    <>
+      <Button variant="primary" onClick={handleShow}>
+        Add New Item
+      </Button>
+
+    <Modal
+      size='lg'
+      aria-labelledby='contained-modal-title-vcenter'
+      show={show}
+      onHide={handleClose}
+      onExit={handleClose}
+    >
+      <Modal.Header>
+        <Modal.Title>Add New Item YaY</Modal.Title>
+      </Modal.Header>
+      <Modal.Body>
       <Form onSubmit={handleSubmit}>
         <Form.Group controlId='formTitle'>
           <Form.Label>Title: </Form.Label>
@@ -98,10 +122,11 @@ const AddItem = (props) => {
         <Button variant='outline-secondary'> Cancel </Button>
 
       </Form>
-    </Container>
+      </Modal.Body>
+    </Modal>
+    </>
   )
 }
-
 
 export default connect(
   state => {
