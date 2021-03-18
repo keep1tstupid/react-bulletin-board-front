@@ -38,3 +38,9 @@ export const editItem = (data) => ({
   type: 'EDIT_ITEM',
   data: data,
 })
+
+// // action to add file
+export const addFile = (data) => ({
+  type: 'ADD_FILE',
+  data: data,
+})

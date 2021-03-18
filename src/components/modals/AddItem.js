@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Modal, Form, Button } from 'react-bootstrap';
 import {connect, useDispatch} from "react-redux";
-import { addNewItem } from "../../redux/actions";
+import { addNewItem, addFile } from "../../redux/actions";
 import AuthService from "../../services/auth.service";
 
 
@@ -43,6 +43,15 @@ const AddItem = (props) => {
     dispatch(addNewItem(item));
     setItem(INITIAL_STATE);
     handleClose();
+  }
+
+
+  const fileAdded = (event) => {
+    //console.log("file added! ", event);
+    const file = event.target.files[0];
+      // headers: {"Content-Type": "multipart/form-data"},}
+    console.log("file is: ", file);
+    dispatch(addFile(file));
   }
 
   return (
@@ -104,6 +113,7 @@ const AddItem = (props) => {
             id='FormControlFile'
             label='Add file: '
             name='attachment'
+            onChange={fileAdded}
           />
         </Form.Group>
 
@@ -119,7 +129,7 @@ const AddItem = (props) => {
         </Form.Group>
 
         <Button type='submit'> Send to moderation / Save </Button> {' '}
-        <Button variant='outline-secondary'> Cancel </Button>
+        <Button variant='outline-secondary' onClick={handleClose}> Cancel </Button>
 
       </Form>
       </Modal.Body>

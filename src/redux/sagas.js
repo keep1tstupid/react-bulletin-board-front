@@ -21,7 +21,6 @@ function* fetchAllItemTypes() {
     yield put(addFetchedItemTypes(result.data));
   } catch (err) {
     // Handle error
-    // yield put(showErrorPopup('SNAP!'));
     console.error(err);
   }
 }
@@ -33,7 +32,6 @@ function* addNewItem(action) {
     yield put(fetchAllItemsAction());
   } catch (err) {
     // Handle error
-    // yield put(showErrorPopup('SNAP!'));
     console.error(err);
   }
 }
@@ -59,6 +57,19 @@ function* editItem(action) {
   }
 }
 
+// saga to add file
+function* addFile(action) {
+  console.log("I tried to add: ", action.data);
+  try {
+    const data = new FormData();
+    data.append("file", action.data);
+    yield call(http.post, "/upload",  data)
+    console.log("I tried to add: ", data);
+  } catch (err) {
+    console.error(err);
+  }
+}
+
 
 export default function* mainSaga() {
   yield takeEvery('FETCH_ALL_ITEMS', fetchAllItems);
@@ -66,4 +77,5 @@ export default function* mainSaga() {
   yield takeEvery('ADD_NEW_ITEM', addNewItem);
   yield takeEvery('DELETE_ITEM', deleteItem);
   yield takeEvery('EDIT_ITEM', editItem);
+  yield takeEvery('ADD_FILE', addFile);
 }

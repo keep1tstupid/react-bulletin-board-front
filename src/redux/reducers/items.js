@@ -2,6 +2,7 @@
 const INITIAL_STATE = {
   itemData: [],
   types: [],
+  attachments: [],
 };
 
 const itemReducer = (state = INITIAL_STATE, action) => {
@@ -11,6 +12,9 @@ const itemReducer = (state = INITIAL_STATE, action) => {
     }
     case 'ADD_FETCHED_ITEM_TYPES': {
       return { ...state, types: action.data };
+    }
+    case 'ADD_FILE': {
+      return { ...state, attachments: action.data}
     }
     default: {
       return state;
