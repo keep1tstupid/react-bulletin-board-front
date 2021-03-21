@@ -21,11 +21,13 @@ export const addFetchedItemTypes = (data) => ({
   data: data,
 })
 
-// action for add new item
+// action to add new item
 export const addNewItem = (data) => ({
   type: 'ADD_NEW_ITEM',
   data: data,
 })
+
+
 
 // action to delete item
 export const deleteItem = (data) => ({
@@ -39,7 +41,7 @@ export const editItem = (data) => ({
   data: data,
 })
 
-// // action to add file
+// action to add file
 export const addFile = (data) => ({
   type: 'ADD_FILE',
   data: data,

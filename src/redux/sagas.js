@@ -14,6 +14,7 @@ function* fetchAllItems() {
     }
 }
 
+
 // saga for all item types
 function* fetchAllItemTypes() {
   try {
@@ -50,7 +51,7 @@ function* deleteItem(action) {
 // saga to edit item
 function* editItem(action) {
   try {
-    const url = "/items" + action.data.id;
+    const url = "/items/" + action.data.id;
     yield call(http.put, url, action.data)
   } catch (err) {
     console.error(err);

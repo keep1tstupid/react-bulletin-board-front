@@ -3,6 +3,7 @@ import { Button } from 'react-bootstrap';
 import AuthService from "../services/auth.service";
 import { deleteItem } from "../redux/actions";
 import {useDispatch} from "react-redux";
+import EditItem from "./modals/EditItem";
 
 
 const Item = (props) => {
@@ -18,10 +19,10 @@ const Item = (props) => {
   const [buttonsVisible, setButtonsVisible] = useState(false);
 
 
-  const handleEdit = () => {
-    const url = '/items/' + props.id;
-    props.history.push(url);
-  }
+  // const handleEdit = () => {
+  //   const url = '/items/' + props.id;
+  //   props.history.push(url);
+  // }
 
   const dispatch = useDispatch();
 
@@ -40,11 +41,13 @@ const Item = (props) => {
         <td>
           {buttonsVisible && (
             <>
-              <Button
-                variant='outline-secondary'
-                onClick={handleEdit}>
-                Edit
-              </Button>
+              {/*<Button*/}
+              {/*  variant='outline-secondary'*/}
+              {/*  onClick={handleEdit}>*/}
+              {/*  Edit*/}
+              {/*</Button>*/}
+              {/*{' '}*/}
+              <EditItem itemId={props.id}/>
               {' '}
               <Button
               variant='outline-danger'

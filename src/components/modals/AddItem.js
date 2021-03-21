@@ -4,6 +4,7 @@ import {connect, useDispatch} from "react-redux";
 import { addNewItem, addFile } from "../../redux/actions";
 import AuthService from "../../services/auth.service";
 
+// todo: check how type selector works
 
 const AddItem = (props) => {
 
@@ -12,13 +13,10 @@ const AddItem = (props) => {
   const [show, setShow] = useState(false);
   console.log(currentUser);
 
-
-  const handleShow = () => setShow(true);
-
   const INITIAL_STATE = {
     author: currentUser.username,
     title: '',
-    type: 'ADVERTISEMENT',
+    type: '',
     description: '',
     attachment: '',
     contactInfo: '',
@@ -27,6 +25,7 @@ const AddItem = (props) => {
 
   const [item, setItem] = useState(INITIAL_STATE);
 
+  const handleShow = () => setShow(true);
   const handleClose = () => {
     setShow(false);
     setItem(INITIAL_STATE);

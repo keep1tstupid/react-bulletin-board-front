@@ -14,8 +14,8 @@ const ItemList = (props) => {
             <tr>
               <th width='20%'>Title</th>
               <th width='20%'>Type</th>
-              <th width='45%'>Description</th>
-              <th width='15%'></th>
+              <th width='40%'>Description</th>
+              <th width='20%'></th>
             </tr>
           </thead>
           <tbody>
