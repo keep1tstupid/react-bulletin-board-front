@@ -3,12 +3,9 @@ import { Modal, Form, Button } from 'react-bootstrap';
 import {connect, useDispatch} from "react-redux";
 import {addFile, editItem} from "../../redux/actions";
 
-// todo: update list after updating items
-
 const EditItem = (props) => {
     const dispatch = useDispatch();
 
-    // todo: why type is always Ad?
     const INITIAL_STATE = {
         id: props.itemBeingEdited.id,
         author: props.itemBeingEdited.username,
@@ -21,11 +18,16 @@ const EditItem = (props) => {
     }
 
     const [item, setItem] = useState(INITIAL_STATE);
-
     const [show, setShow] = useState(false);
-    const handleShow = () => setShow(true);
+
+    const reload = () => window.location.reload();
+    const handleShow = () => {
+        setShow(true);
+        console.log(INITIAL_STATE)
+    }
     const handleClose = () => {
         setShow(false);
+        reload();
         // setItem(INITIAL_STATE);
     }
     const inputChanged = (event) => {
@@ -84,6 +86,7 @@ const EditItem = (props) => {
                         <Form.Control
                             as='select'
                             name='type'
+                            value={item.type}
                             onChange={inputChanged}
                         >
                             {props.types.map((type, index) => <option key={index}> {type} </option>) }
@@ -96,6 +99,7 @@ const EditItem = (props) => {
                             as='textarea'
                             rows={3}
                             name='description'
+                            value={item.description}
                             onChange={inputChanged}
                         />
                     </Form.Group>

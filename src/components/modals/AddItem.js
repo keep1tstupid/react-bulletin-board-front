@@ -25,9 +25,13 @@ const AddItem = (props) => {
 
   const [item, setItem] = useState(INITIAL_STATE);
 
+  const reload = () => window.location.reload();
+
   const handleShow = () => setShow(true);
+
   const handleClose = () => {
     setShow(false);
+    reload();
     setItem(INITIAL_STATE);
   }
 
