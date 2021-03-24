@@ -1,7 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Table, Container } from 'react-bootstrap';
+import { getProperTypeItems, getProperStateItems } from '../redux/selectors'
 import Item from "./Item";
+import { setTypeFilter } from "../redux/actions";
 
 
 const ItemList = (props) => {
@@ -28,7 +30,15 @@ const ItemList = (props) => {
 }
 
 export default connect(
-  state => {
-    return { items: state.items.itemData }
+  (state, ownProps) => {
+    //return { items: state.items.itemData }
+    console.log(ownProps.type);
+    //console.log(state);
+    // setTypeFilter(ownProps.type);
+    return {
+      items: getProperTypeItems(state)(ownProps.type)
+    }
   }, {}
 )(ItemList);
+
+// export default ItemList
