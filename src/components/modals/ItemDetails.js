@@ -2,7 +2,7 @@ import React from 'react';
 import { Container } from 'react-bootstrap';
 
 
-//todo : make as modal
+//todo : make as modal, no editing, preview
 const ItemDetails = (props) => {
 
   // get item info by id

@@ -1,6 +1,8 @@
 import { createSelector } from 'reselect';
 
 
+// todo: update selectors to use both state and type filtering when needed.
+
 const getStateFilter = state => state.stateFilter;
 const getItems = state => {
   // console.log('getItems', state)

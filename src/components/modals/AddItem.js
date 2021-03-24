@@ -4,7 +4,7 @@ import {connect, useDispatch} from "react-redux";
 import { addNewItem, addFile } from "../../redux/actions";
 import AuthService from "../../services/auth.service";
 
-// todo: check how type selector works
+//todo: add image preview or at least title
 
 const AddItem = (props) => {
 

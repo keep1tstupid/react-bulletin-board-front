@@ -34,7 +34,7 @@ const EditItem = (props) => {
         setItem({...item, [event.target.name]: event.target.value});
     };
 
-    // todo: show existing file
+    // todo: show existing file preview
 
     const fileAdded = (event) => {
         const file = event.target.files[0];

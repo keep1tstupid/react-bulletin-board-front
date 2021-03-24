@@ -4,25 +4,31 @@ import AuthService from "../services/auth.service";
 import { deleteItem } from "../redux/actions";
 import {useDispatch} from "react-redux";
 import EditItem from "./modals/EditItem";
+import ApproveItem from "./modals/ApproveItem";
 
+// todo: how to show right buttons in the right views - seems to be fixed
 
 const Item = (props) => {
   useEffect(() => {
     const currentUser = AuthService.getCurrentUser();
+    const currentLocation = window.location.pathname;
+    console.log('USER', currentUser);
+    console.log('LOCATION', currentLocation);
+
     if (currentUser.roles.includes("ROLE_ADMIN") ||
-      currentUser.roles.includes("ROLE_MODERATOR") ||
-      currentUser.username === props.author) {
+        currentUser.roles.includes("ROLE_MODERATOR" ||
+        currentUser.username === props.author)) {
       setButtonsVisible(true);
+    }
+    if ((currentUser.roles.includes("ROLE_ADMIN") ||
+      currentUser.roles.includes("ROLE_MODERATOR")) &&
+      currentLocation === '/moderation') {
+      setApprovalAvailable(true);
     }
   }, [props])
 
   const [buttonsVisible, setButtonsVisible] = useState(false);
-
-
-  // const handleEdit = () => {
-  //   const url = '/items/' + props.id;
-  //   props.history.push(url);
-  // }
+  const [approvalAvailable, setApprovalAvailable] = useState(false);
 
   const dispatch = useDispatch();
 
@@ -33,9 +39,7 @@ const Item = (props) => {
   return (
     <>
       <tr>
-        <td>
-          <a href={`/items/${props.id}`} >{props.title}</a>
-        </td>
+        <td>{props.title}</td>
         <td>{props.type}</td>
         <td>{props.description}</td>
         <td>
@@ -52,9 +56,13 @@ const Item = (props) => {
               <Button
               variant='outline-danger'
               onClick={handleDelete}>
-              Delete
+              Del
               </Button>
+              {' '}
             </>
+          )}
+          {approvalAvailable && (
+            <ApproveItem itemId={props.id}/>
           )}
 
         </td>
