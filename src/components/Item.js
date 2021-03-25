@@ -6,14 +6,13 @@ import {useDispatch} from "react-redux";
 import EditItem from "./modals/EditItem";
 import ApproveItem from "./modals/ApproveItem";
 
-// todo: how to show right buttons in the right views - seems to be fixed
 
 const Item = (props) => {
   useEffect(() => {
     const currentUser = AuthService.getCurrentUser();
     const currentLocation = window.location.pathname;
-    console.log('USER', currentUser);
-    console.log('LOCATION', currentLocation);
+    // console.log('USER', currentUser);
+    // console.log('LOCATION', currentLocation);
 
     if (currentUser.roles.includes("ROLE_ADMIN") ||
         currentUser.roles.includes("ROLE_MODERATOR" ||
@@ -45,12 +44,6 @@ const Item = (props) => {
         <td>
           {buttonsVisible && (
             <>
-              {/*<Button*/}
-              {/*  variant='outline-secondary'*/}
-              {/*  onClick={handleEdit}>*/}
-              {/*  Edit*/}
-              {/*</Button>*/}
-              {/*{' '}*/}
               <EditItem itemId={props.id}/>
               {' '}
               <Button

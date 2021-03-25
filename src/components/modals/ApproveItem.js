@@ -8,7 +8,7 @@ const ApproveItem = (props) => {
 
   return (
     <>
-      <Button variant="primary" >
+      <Button variant="'outline-primary" >
         Approve
       </Button>
     </>

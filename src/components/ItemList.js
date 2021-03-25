@@ -31,14 +31,10 @@ const ItemList = (props) => {
 
 export default connect(
   (state, ownProps) => {
-    //return { items: state.items.itemData }
-    console.log(ownProps.type);
-    //console.log(state);
-    // setTypeFilter(ownProps.type);
+    // console.log(ownProps.type);
+    // console.log(state);
     return {
       items: getProperTypeItems(state)(ownProps.type)
     }
   }, {}
 )(ItemList);
-
-// export default ItemList

@@ -11,14 +11,15 @@ const AddItem = (props) => {
   //console.log(props);
   const currentUser = AuthService.getCurrentUser();
   const [show, setShow] = useState(false);
-  console.log(currentUser);
+  //console.log(currentUser);
 
   const INITIAL_STATE = {
     author: currentUser.username,
     title: '',
     type: '',
     description: '',
-    attachment: '',
+    attachmentFile: '',
+    attachmentId: '',
     contactInfo: '',
     state: 'IN_MODERATION',
   }
@@ -42,10 +43,12 @@ const AddItem = (props) => {
   const dispatch = useDispatch();
 
   const handleSubmit = (event) => {
+    console.log(item);
     event.preventDefault();
+//    dispatch(addFile(item.attachment));
     dispatch(addNewItem(item));
-    setItem(INITIAL_STATE);
-    handleClose();
+    //setItem(INITIAL_STATE);
+    //handleClose();
   }
 
 
@@ -54,7 +57,8 @@ const AddItem = (props) => {
     const file = event.target.files[0];
       // headers: {"Content-Type": "multipart/form-data"},}
     console.log("file is: ", file);
-    dispatch(addFile(file));
+    setItem({...item, attachmentFile: file})
+    //dispatch(addFile(file));
   }
 
   return (

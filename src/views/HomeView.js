@@ -8,7 +8,7 @@ const HomeView = () => {
   return (
     <>
       <Header />
-      <Container className={'m-3'}>
+      <Container className={'mt-3'}>
         <AddItem />
       </Container>
       <ItemTabs />
