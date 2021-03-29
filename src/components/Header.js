@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Container, Navbar, Nav, Form, Button} from 'react-bootstrap';
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import AuthService from "../services/auth.service";
 
 // todo: add 'my items' view to see own items and their states
@@ -26,9 +26,9 @@ const Header = () => {
         <Container className={'pl-1'}>
           <Navbar.Brand>BB</Navbar.Brand>
           <Nav className="mr-auto">
-            <Nav.Link as={Link} to="/home">All items</Nav.Link>
+            <Nav.Link as={NavLink} to="/home">All items</Nav.Link>
             {moderationAvailable && (
-            <Nav.Link as={Link} to="/moderation">Moderation</Nav.Link>
+            <Nav.Link as={NavLink} to="/moderation">Moderation</Nav.Link>
             )}
           </Nav>
           <Form inline>
