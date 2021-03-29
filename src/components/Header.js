@@ -27,6 +27,7 @@ const Header = () => {
           <Navbar.Brand>BB</Navbar.Brand>
           <Nav className="mr-auto">
             <Nav.Link as={NavLink} to="/home">All items</Nav.Link>
+            <Nav.Link as={NavLink} to="/my-items">My items</Nav.Link>
             {moderationAvailable && (
             <Nav.Link as={NavLink} to="/moderation">Moderation</Nav.Link>
             )}

@@ -4,6 +4,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import LoginView from "./views/LoginView";
 import HomeView from "./views/HomeView";
 import ModerateItemView from "./views/ModerateItemView";
+import MyItemsView from "./views/MyItemsView";
 
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
           <Route exact path="/home" component={HomeView} />
           <Route exact path={["/items"]} component={HomeView} />
           <Route exact path="/moderation" component={ModerateItemView}/>
+          <Route exact path="/my-items" component={MyItemsView}/>
         </Switch>
       </BrowserRouter>
     </div>
