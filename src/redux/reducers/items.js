@@ -3,7 +3,7 @@ const INITIAL_STATE = {
   itemData: [],
   types: [],
   attachments: [],
-  stateFilter: 'SHOW_ALL',
+//  stateFilter: 'SHOW_ALL',
   typeFilter: 'SHOW_ALL',
 };
 

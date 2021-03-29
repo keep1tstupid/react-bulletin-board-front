@@ -12,9 +12,9 @@ const EditItem = (props) => {
         title: props.itemBeingEdited.title,
         type: props.itemBeingEdited.type,
         description: props.itemBeingEdited.description,
-        attachment: '',
+        attachment: props.itemBeingEdited.attachmentId,
         contactInfo: props.itemBeingEdited.contactInfo,
-        state: 'IN_MODERATION',
+        state: props.itemBeingEdited.state,
     }
 
     const [item, setItem] = useState(INITIAL_STATE);

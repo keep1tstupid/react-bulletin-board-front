@@ -1,9 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Table, Container } from 'react-bootstrap';
-import { getProperTypeItems, getProperStateItems } from '../redux/selectors'
+import { getItemsForUsersList, getItemsForModerationList } from '../redux/selectors'
 import Item from "./Item";
-import { setTypeFilter } from "../redux/actions";
 
 
 const ItemList = (props) => {
@@ -33,8 +32,14 @@ export default connect(
   (state, ownProps) => {
     // console.log(ownProps.type);
     // console.log(state);
-    return {
-      items: getProperTypeItems(state)(ownProps.type)
+    if (ownProps.type) {
+      return {
+        items: getItemsForUsersList(state)(ownProps.type)
+      }
+    } else {
+      return {
+        items: state.items.itemData.filter(item => item.state === 'IN_MODERATION')
+      }
     }
   }, {}
 )(ItemList);

@@ -84,9 +84,6 @@ function* editItem(action) {
   }
 }
 
-
-
-
 export default function* mainSaga() {
   yield takeEvery('FETCH_ALL_ITEMS', fetchAllItems);
   yield takeEvery('FETCH_ALL_ITEM_TYPES', fetchAllItemTypes);

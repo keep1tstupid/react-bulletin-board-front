@@ -1,9 +1,16 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import Header from "../components/Header";
 import ItemList from "../components/ItemList";
 import {Container} from "react-bootstrap";
+import {useDispatch} from "react-redux";
+import {fetchAllItems} from "../redux/actions";
 
 const ModerateItemView = () => {
+  const dispatch = useDispatch()
+  useEffect(() => {
+    dispatch(fetchAllItems());
+  }, [dispatch])
+
   return (
     <>
       <Header />

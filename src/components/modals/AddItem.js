@@ -47,8 +47,8 @@ const AddItem = (props) => {
     event.preventDefault();
 //    dispatch(addFile(item.attachment));
     dispatch(addNewItem(item));
-    //setItem(INITIAL_STATE);
-    //handleClose();
+    setItem(INITIAL_STATE);
+    handleClose();
   }
 
 
