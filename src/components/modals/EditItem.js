@@ -3,7 +3,22 @@ import { Modal, Form, Button } from 'react-bootstrap';
 import {connect, useDispatch} from "react-redux";
 import {addFile, editItem} from "../../redux/actions";
 
+
 const EditItem = (props) => {
+
+    const getFileAttributes = (attachmentId) => {
+        const file = props.attachments.find((file) => file.id === attachmentId)
+        const path = file ? `${file.url}/${file.name}`: null;
+        const name = file ? file.name : null;
+        const exist = Boolean(file);
+
+        return {
+            name,
+            path,
+            exist,
+        }
+    }
+
     const dispatch = useDispatch();
 
     const INITIAL_STATE = {
@@ -12,18 +27,30 @@ const EditItem = (props) => {
         title: props.itemBeingEdited.title,
         type: props.itemBeingEdited.type,
         description: props.itemBeingEdited.description,
-        attachment: props.itemBeingEdited.attachmentId,
+        attachmentId: props.itemBeingEdited.attachmentId,
         contactInfo: props.itemBeingEdited.contactInfo,
         state: props.itemBeingEdited.state,
     }
 
     const [item, setItem] = useState(INITIAL_STATE);
+
+    if (item.attachmentId) {
+        // console.log("item ", item.title, " attachment ",item.attachmentId);
+        // console.log("attachments: ", props.attachments);
+        // console.log("props", props);
+        const fileAttached = props.attachments.find((file) => file.id === item.attachmentId);
+        const fileName = fileAttached.name;
+        // console.log("file attached ", fileAttached);
+        // console.log("file name ", fileName);
+    }
+
+    const fileAttributes = getFileAttributes(item.attachmentId);
     const [show, setShow] = useState(false);
 
     const reload = () => window.location.reload();
     const handleShow = () => {
         setShow(true);
-        console.log(INITIAL_STATE)
+        // console.log(INITIAL_STATE)
     }
     const handleClose = () => {
         setShow(false);
@@ -33,8 +60,6 @@ const EditItem = (props) => {
     const inputChanged = (event) => {
         setItem({...item, [event.target.name]: event.target.value});
     };
-
-    // todo: show existing file preview
 
     const fileAdded = (event) => {
         const file = event.target.files[0];
@@ -64,7 +89,6 @@ const EditItem = (props) => {
                     <Modal.Title>Edit Item YaY</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <p> {item.title} </p>
                     <Form onSubmit={handleSubmit}>
                     <Form.Group controlId='formTitle'>
                         <Form.Label>Title: </Form.Label>
@@ -103,15 +127,30 @@ const EditItem = (props) => {
                             onChange={inputChanged}
                         />
                     </Form.Group>
-
-                    <Form.Group>
-                        <Form.File
-                            id='FormControlFile'
-                            label='Add file: '
-                            name='attachment'
-                            onChange={fileAdded}
-                        />
-                    </Form.Group>
+                        {(fileAttributes.exist) ?
+                          (<>
+                              <p>Existing file: {fileAttributes.name}</p>
+                              <img src={fileAttributes.path} />
+                              <Form.Group>
+                                  <Form.File
+                                    id='FormControlFile'
+                                    label='Replace file: '
+                                    name='attachment'
+                                    onChange={fileAdded}
+                                  />
+                              </Form.Group>
+                          </>)
+                          :
+                          (<>
+                              <Form.Group>
+                              <Form.File
+                                id='FormControlFile'
+                                label='Add file: '
+                                name='attachment'
+                                onChange={fileAdded}
+                              />
+                          </Form.Group>
+                          </>) }
 
                     <Form.Group controlId='textAreaContact'>
                         <Form.Label>Contact info: </Form.Label>
@@ -138,7 +177,8 @@ export default connect(
     (state, ownProps) => {
         return {
             types: state.items.types,
-            itemBeingEdited: state.items.itemData.find((item) => item.id === ownProps.itemId)
+            itemBeingEdited: state.items.itemData.find((item) => item.id === ownProps.itemId),
+            attachments: state.items.allAttachments,
         }
     }, {}
 )(EditItem);

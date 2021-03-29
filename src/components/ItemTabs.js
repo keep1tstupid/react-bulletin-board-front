@@ -1,15 +1,8 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import { Container, Tabs, Tab, } from 'react-bootstrap';
 import ItemList from "./ItemList";
-import {connect, useDispatch} from "react-redux";
-import {fetchAllItems} from "../redux/actions";
 
-const ItemTabs = (props) => {
-
-  const dispatch = useDispatch()
-  useEffect(() => {
-    dispatch(fetchAllItems());
-  }, [dispatch])
+const ItemTabs = () => {
 
   return (
     <Container className={'mt-3 pl-0 pr-0'}>
@@ -32,10 +25,3 @@ const ItemTabs = (props) => {
 }
 
 export default ItemTabs;
-
-
-// export default connect(
-//   state => {
-//     return { items: state.items.itemData }
-//   }, {}
-// )(ItemTabs);

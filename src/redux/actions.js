@@ -10,17 +10,6 @@ export const addFetchedItems = (data) => ({
   data: data,
 })
 
-// actions for item types
-export const fetchAllItemTypes = () => ({
-  type: 'FETCH_ALL_ITEM_TYPES',
-  data: null,
-})
-
-export const addFetchedItemTypes = (data) => ({
-  type: 'ADD_FETCHED_ITEM_TYPES',
-  data: data,
-})
-
 // action to add new item
 export const addNewItem = (data) => ({
   type: 'ADD_NEW_ITEM',
@@ -45,14 +34,14 @@ export const addFile = (data) => ({
   data: data,
 })
 
-// actions for filters for selectors
-export const setStateFilter = (data) => ({
-  type: 'SET_STATE_FILTER',
-  data: data,
-})
-
-export const setTypeFilter = (data) => ({
-  type: 'SET_TYPE_FILTER',
-  data: data,
-})
+// // actions for filters for selectors
+// export const setStateFilter = (data) => ({
+//   type: 'SET_STATE_FILTER',
+//   data: data,
+// })
+//
+// export const setTypeFilter = (data) => ({
+//   type: 'SET_TYPE_FILTER',
+//   data: data,
+// })
 

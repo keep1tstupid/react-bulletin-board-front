@@ -1,13 +1,22 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
 import http from "../http-common";
-import {addFetchedItems, addFetchedItemTypes, addFile, fetchAllItems as fetchAllItemsAction} from './actions';
+import {addFetchedItems, addFile, fetchAllItems as fetchAllItemsAction} from './actions';
 
 
-// saga for all items
+// saga for all items and attachments
 function* fetchAllItems() {
     try {
-      const result = yield call(http.get, '/items');
-      yield put(addFetchedItems(result.data));
+      const items = yield call(http.get, '/items');
+      const files = yield call(http.get, '/files');
+      const types = yield call(http.get, '/types');
+
+      const result  = {
+        items: items.data,
+        files: files.data,
+        types: types.data,
+      }
+
+      yield put(addFetchedItems(result));
     } catch (err) {
       // Handle error
       // yield put(showErrorPopup('SNAP!'));
@@ -15,17 +24,6 @@ function* fetchAllItems() {
     }
 }
 
-
-// saga for all item types
-function* fetchAllItemTypes() {
-  try {
-    const result = yield call(http.get, '/types');
-    yield put(addFetchedItemTypes(result.data));
-  } catch (err) {
-    // Handle error
-    console.error(err);
-  }
-}
 
 // saga to add file
 function* uploadFile(action) {
@@ -41,6 +39,7 @@ function* uploadFile(action) {
     console.error(err);
   }
 }
+
 
 // saga to add new item
 function* addNewItem(action) {
@@ -86,7 +85,6 @@ function* editItem(action) {
 
 export default function* mainSaga() {
   yield takeEvery('FETCH_ALL_ITEMS', fetchAllItems);
-  yield takeEvery('FETCH_ALL_ITEM_TYPES', fetchAllItemTypes);
   yield takeEvery('ADD_NEW_ITEM', addNewItem);
   yield takeEvery('DELETE_ITEM', deleteItem);
   yield takeEvery('EDIT_ITEM', editItem);

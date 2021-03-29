@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
 import { Modal, Form, Button } from 'react-bootstrap';
 import {connect, useDispatch} from "react-redux";
-import { addNewItem, addFile } from "../../redux/actions";
+import { addNewItem } from "../../redux/actions";
 import AuthService from "../../services/auth.service";
 
-//todo: add image preview or at least title
+//todo: add image preview or at least filename
 
 const AddItem = (props) => {
-
   //console.log(props);
   const currentUser = AuthService.getCurrentUser();
   const [show, setShow] = useState(false);
@@ -26,14 +25,14 @@ const AddItem = (props) => {
 
   const [item, setItem] = useState(INITIAL_STATE);
 
-  const reload = () => window.location.reload();
-
   const handleShow = () => setShow(true);
 
+  // todo: figure out why file disappears if handleClose uses reload
+
+  const reload = () => window.location.reload();
   const handleClose = () => {
     setShow(false);
-    reload();
-    setItem(INITIAL_STATE);
+    //reload();
   }
 
   const inputChanged = (event) => {
@@ -55,10 +54,8 @@ const AddItem = (props) => {
   const fileAdded = (event) => {
     //console.log("file added! ", event);
     const file = event.target.files[0];
-      // headers: {"Content-Type": "multipart/form-data"},}
     console.log("file is: ", file);
     setItem({...item, attachmentFile: file})
-    //dispatch(addFile(file));
   }
 
   return (

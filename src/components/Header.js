@@ -3,6 +3,8 @@ import { Container, Navbar, Nav, Form, Button} from 'react-bootstrap';
 import { Link } from "react-router-dom";
 import AuthService from "../services/auth.service";
 
+// todo: add 'my items' view to see own items and their states
+
 const Header = () => {
   const currentUser = AuthService.getCurrentUser();
   useEffect(() => {
