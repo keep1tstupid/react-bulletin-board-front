@@ -1,4 +1,6 @@
 
+++ /api before every path
+
 show all items >> ("/home")
 
 get all items >> ("/items")

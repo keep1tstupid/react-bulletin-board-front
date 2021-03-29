@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Modal, Form, Button } from 'react-bootstrap';
-import {connect, useDispatch} from "react-redux";
-import {addFile, editItem} from "../../redux/actions";
+import { connect, useDispatch } from "react-redux";
+import { editItem } from "../../redux/actions";
 
 
 const EditItem = (props) => {
@@ -28,22 +28,12 @@ const EditItem = (props) => {
         type: props.itemBeingEdited.type,
         description: props.itemBeingEdited.description,
         attachmentId: props.itemBeingEdited.attachmentId,
+        attachmentFile: '',
         contactInfo: props.itemBeingEdited.contactInfo,
         state: props.itemBeingEdited.state,
     }
 
     const [item, setItem] = useState(INITIAL_STATE);
-
-    if (item.attachmentId) {
-        // console.log("item ", item.title, " attachment ",item.attachmentId);
-        // console.log("attachments: ", props.attachments);
-        // console.log("props", props);
-        const fileAttached = props.attachments.find((file) => file.id === item.attachmentId);
-        const fileName = fileAttached.name;
-        // console.log("file attached ", fileAttached);
-        // console.log("file name ", fileName);
-    }
-
     const fileAttributes = getFileAttributes(item.attachmentId);
     const [show, setShow] = useState(false);
 
@@ -62,15 +52,16 @@ const EditItem = (props) => {
     };
 
     const fileAdded = (event) => {
+        //console.log("file added! ", event);
         const file = event.target.files[0];
         console.log("file is: ", file);
-        dispatch(addFile(file));
+        setItem({...item, attachmentFile: file})
     }
 
     const handleSubmit = (event) => {
         event.preventDefault();
         dispatch(editItem(item));
-        handleClose();
+        //handleClose();
     }
 
     return (
@@ -130,7 +121,7 @@ const EditItem = (props) => {
                         {(fileAttributes.exist) ?
                           (<>
                               <p>Existing file: {fileAttributes.name}</p>
-                              <img src={fileAttributes.path} />
+                              <img src={fileAttributes.path} alt="attachment"/>
                               <Form.Group>
                                   <Form.File
                                     id='FormControlFile'
@@ -181,4 +172,4 @@ export default connect(
             attachments: state.items.allAttachments,
         }
     }, {}
-)(EditItem);
+)(EditItem)

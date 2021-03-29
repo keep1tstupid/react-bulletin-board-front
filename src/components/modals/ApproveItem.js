@@ -6,16 +6,12 @@ import { editItem } from "../../redux/actions";
 
 const ApproveItem = (props) => {
   // console.log(props)
-  const [item, setItem] = useState({...props.itemBeingApproved, state: 'APPROVED'});
+  const item = ({...props.itemBeingApproved, state: 'APPROVED'});
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const reload = () => window.location.reload();
-
-  const updateState = () => {
-    setItem({...item, state: 'APPROVED'})
-  }
 
   const dispatch = useDispatch();
   const handleApprove = () => {

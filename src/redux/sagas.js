@@ -6,9 +6,9 @@ import {addFetchedItems, addFile, fetchAllItems as fetchAllItemsAction} from './
 // saga for all items and attachments
 function* fetchAllItems() {
     try {
-      const items = yield call(http.get, '/items');
-      const files = yield call(http.get, '/files');
-      const types = yield call(http.get, '/types');
+      const items = yield call(http.get, '/api/items');
+      const files = yield call(http.get, '/api/files');
+      const types = yield call(http.get, '/api/types');
 
       const result  = {
         items: items.data,
@@ -27,13 +27,13 @@ function* fetchAllItems() {
 
 // saga to add file
 function* uploadFile(action) {
-  console.log("I tried to add: ", action.data.attachmentFile, " for ", action.data.id);
+  console.log("I tried to add: ", action.data.file, " for ", action.data.id);
   try {
     const data = new FormData();
     data.append("file", action.data.file);
     data.append("id", action.data.id);
 
-    yield call(http.post, "/upload",  data)
+    yield call(http.post, "/api/upload", data)
     console.log("I tried to add: ", data);
   } catch (err) {
     console.error(err);
@@ -45,7 +45,7 @@ function* uploadFile(action) {
 function* addNewItem(action) {
   console.log("action file = ", action.data.attachmentFile);
   try {
-    const response = yield call(http.post, "/items", action.data);
+    const response = yield call(http.post, "/api/items", action.data);
     //console.log("response = ", response);
     //console.log("action = ", action);
     if (action.data.attachmentFile !== '') {
@@ -65,7 +65,7 @@ function* addNewItem(action) {
 // saga to delete item
 function* deleteItem(action) {
   try {
-    const url = "/items" + action.data.id;
+    const url = "/api/items" + action.data.id;
     yield call(http.delete, url, action.data);
     yield put(fetchAllItemsAction());
   } catch (err) {
@@ -76,8 +76,16 @@ function* deleteItem(action) {
 // saga to edit item
 function* editItem(action) {
   try {
-    const url = "/items/" + action.data.id;
-    yield call(http.put, url, action.data)
+    const url = "/api/items/" + action.data.id;
+    const response = yield call(http.put, url, action.data)
+    if (action.data.attachmentFile !== '') {
+      console.log("response.data.id = ", response.data.id,
+        "action.data.attachmentFile = ", action.data.attachmentFile);
+      yield put(addFile({
+        file: action.data.attachmentFile,
+        id: response.data.id,
+      }));
+    }
   } catch (err) {
     console.error(err);
   }

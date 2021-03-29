@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Table, Container } from 'react-bootstrap';
-import { getItemsForUsersList, getItemsForModerationList } from '../redux/selectors'
+import { getItemsForUsersList } from '../redux/selectors'
 import Item from "./Item";
 
 

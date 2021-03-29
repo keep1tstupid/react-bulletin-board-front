@@ -44,7 +44,6 @@ const AddItem = (props) => {
   const handleSubmit = (event) => {
     console.log(item);
     event.preventDefault();
-//    dispatch(addFile(item.attachment));
     dispatch(addNewItem(item));
     setItem(INITIAL_STATE);
     handleClose();
