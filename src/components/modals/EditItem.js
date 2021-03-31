@@ -121,7 +121,7 @@ const EditItem = (props) => {
                         {(fileAttributes.exist) ?
                           (<>
                               <p>Existing file: {fileAttributes.name}</p>
-                              <img src={fileAttributes.path} alt="attachment"/>
+                              {/*<img src={fileAttributes.path} alt="attachment"/>*/}
                               <Form.Group>
                                   <Form.File
                                     id='FormControlFile'
