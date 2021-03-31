@@ -1,6 +1,6 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
 import http from "../http-common";
-import {addFetchedItems, addFile, fetchAllItems as fetchAllItemsAction} from './actions';
+import { addFetchedItems, addFile, fetchAllItems as fetchAllItemsAction } from './actions';
 
 
 // saga for all items and attachments
@@ -65,7 +65,7 @@ function* addNewItem(action) {
 // saga to delete item
 function* deleteItem(action) {
   try {
-    const url = "/api/items" + action.data.id;
+    const url = "/api/items/" + action.data.id;
     yield call(http.delete, url, action.data);
     yield put(fetchAllItemsAction());
   } catch (err) {
