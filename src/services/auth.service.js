@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:8080/api/auth/";
+const API_URL = "https://bboard-app.herokuapp.com/api/auth/";
 
 const login = (username, password) => {
   console.log(username, password, );
