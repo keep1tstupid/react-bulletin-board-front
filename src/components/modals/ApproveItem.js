@@ -5,7 +5,7 @@ import { editItem } from "../../redux/actions";
 
 
 const ApproveItem = (props) => {
-  // console.log(props)
+  // console.log(props);
   const item = ({...props.itemBeingApproved, state: 'APPROVED'});
   const [show, setShow] = useState(false);
 
