@@ -7,6 +7,8 @@ import EditItem from "./modals/EditItem";
 import ApproveItem from "./modals/ApproveItem";
 
 
+//todo: figure out why buttons are not shown for item owner
+
 const Item = (props) => {
   useEffect(() => {
     const currentUser = AuthService.getCurrentUser();
