@@ -3,9 +3,7 @@ import { Modal, Form, Button } from 'react-bootstrap';
 import { connect, useDispatch } from "react-redux";
 import { editItem } from "../../redux/actions";
 
-// todo: test closing modal after saving
 // todo: update type selector: add default value
-// todo: state changes to "in moderation" after editing is done.
 
 const EditItem = (props) => {
 

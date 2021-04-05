@@ -5,24 +5,6 @@ const getItems = state => {
   return state.items.itemData
 };
 
-// export const getItemsForModerationList = createSelector(
-//   [getStateFilter, getItems],
-//   (stateFilter, items) => {
-//     switch (stateFilter) {
-//       case 'SHOW_ALL':
-//         return items
-//       case 'SHOW_IN_MODERATION':
-//         return items.filter(item => item.state === 'IN_MODERATION')
-//       case 'SHOW_APPROVED':
-//         return items.filter(item => item.state === 'APPROVED')
-//       case 'SHOW_DECLINED':
-//         return items.filter(item => item.state === 'DECLINED')
-//       default:
-//         //throw new Error('Unknown filter: ' + stateFilter)
-//         return items
-//     }
-//   }
-// );
 
 
 export const getItemsForUsersList = createSelector(

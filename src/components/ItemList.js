@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Table, Container } from 'react-bootstrap';
 import { getItemsForUsersList } from '../redux/selectors'
 import Item from "./Item";
+import AuthService from "../services/auth.service";
 
 
 const ItemList = (props) => {
@@ -30,16 +31,23 @@ const ItemList = (props) => {
 
 export default connect(
   (state, ownProps) => {
+    const currentUser = AuthService.getCurrentUser();
+    const currentLocation = window.location.pathname;
+
     // console.log(ownProps.type);
     // console.log(state);
     if (ownProps.type) {
       return {
         items: getItemsForUsersList(state)(ownProps.type)
       }
-    } else {
+    } else if (currentLocation === '/moderation') {
       return {
         items: state.items.itemData.filter(item => item.state === 'IN_MODERATION')
       }
+    } else if (currentLocation === '/my-items') {
+        return {
+          items: state.items.itemData.filter(item => item.author === currentUser)
+        }
     }
   }, {}
 )(ItemList);

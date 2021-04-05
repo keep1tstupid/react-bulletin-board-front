@@ -86,6 +86,7 @@ function* editItem(action) {
         id: response.data.id,
       }));
     }
+    yield put(fetchAllItemsAction());
   } catch (err) {
     console.error(err);
   }
