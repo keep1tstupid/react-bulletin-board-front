@@ -4,7 +4,7 @@ import {connect, useDispatch} from "react-redux";
 import { addNewItem } from "../../redux/actions";
 import AuthService from "../../services/auth.service";
 
-//todo: add image preview or at least filename
+// add image preview or at least filename
 
 const AddItem = (props) => {
   //console.log(props);
