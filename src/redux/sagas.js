@@ -78,7 +78,7 @@ function* editItem(action) {
   try {
     const url = "/api/items/" + action.data.id;
     const response = yield call(http.put, url, action.data)
-    if (action.data.attachmentFile !== '') {
+    if (action.data.attachmentFile) {
       console.log("response.data.id = ", response.data.id,
         "action.data.attachmentFile = ", action.data.attachmentFile);
       yield put(addFile({

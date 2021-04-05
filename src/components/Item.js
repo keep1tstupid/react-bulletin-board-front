@@ -13,12 +13,12 @@ const Item = (props) => {
   useEffect(() => {
     const currentUser = AuthService.getCurrentUser();
     const currentLocation = window.location.pathname;
-    // console.log('USER', currentUser);
+
     // console.log('LOCATION', currentLocation);
 
     if (currentUser.roles.includes("ROLE_ADMIN") ||
-        currentUser.roles.includes("ROLE_MODERATOR" ||
-        currentUser.username === props.author)) {
+        currentUser.roles.includes("ROLE_MODERATOR") ||
+        currentUser.username === props.author) {
       setButtonsVisible(true);
     }
     if ((currentUser.roles.includes("ROLE_ADMIN") ||

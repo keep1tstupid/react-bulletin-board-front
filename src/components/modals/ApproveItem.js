@@ -11,14 +11,12 @@ const ApproveItem = (props) => {
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  const reload = () => window.location.reload();
 
   const dispatch = useDispatch();
   const handleApprove = () => {
     // console.log("APPROVED ITEM: ", item);
     dispatch(editItem(item));
     handleClose();
-    reload();
   }
 
   return (

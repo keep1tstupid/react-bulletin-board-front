@@ -3,7 +3,9 @@ import { Modal, Form, Button } from 'react-bootstrap';
 import { connect, useDispatch } from "react-redux";
 import { editItem } from "../../redux/actions";
 
-//todo: test closing modal after saving
+// todo: test closing modal after saving
+// todo: update type selector: add default value
+// todo: state changes to "in moderation" after editing is done.
 
 const EditItem = (props) => {
 
@@ -31,21 +33,19 @@ const EditItem = (props) => {
         attachmentId: props.itemBeingEdited.attachmentId,
         attachmentFile: '',
         contactInfo: props.itemBeingEdited.contactInfo,
-        state: props.itemBeingEdited.state,
+        state: 'IN_MODERATION',
     }
 
     const [item, setItem] = useState(INITIAL_STATE);
     const fileAttributes = getFileAttributes(item.attachmentId);
     const [show, setShow] = useState(false);
 
-    const reload = () => window.location.reload();
     const handleShow = () => {
         setShow(true);
         // console.log(INITIAL_STATE)
     }
     const handleClose = () => {
         setShow(false);
-        reload();
         // setItem(INITIAL_STATE);
     }
     const inputChanged = (event) => {
@@ -62,7 +62,7 @@ const EditItem = (props) => {
     const handleSubmit = (event) => {
         event.preventDefault();
         dispatch(editItem(item));
-        //handleClose();
+        handleClose();
     }
 
     return (

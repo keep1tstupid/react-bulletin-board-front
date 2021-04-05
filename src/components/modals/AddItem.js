@@ -28,11 +28,11 @@ const AddItem = (props) => {
   const handleShow = () => setShow(true);
 
   // todo: figure out why file disappears if handleClose uses reload
+  // todo: update type selector: add default value
 
   const reload = () => window.location.reload();
   const handleClose = () => {
     setShow(false);
-    //reload();
   }
 
   const inputChanged = (event) => {
