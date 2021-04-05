@@ -36,16 +36,14 @@ const EditItem = (props) => {
 
     const [item, setItem] = useState(INITIAL_STATE);
     const fileAttributes = getFileAttributes(item.attachmentId);
-    const [show, setShow] = useState(false);
 
-    const handleShow = () => {
-        setShow(true);
-        // console.log(INITIAL_STATE)
-    }
+    const [show, setShow] = useState(false);
+    const handleShow = () => setShow(true);
     const handleClose = () => {
         setShow(false);
         // setItem(INITIAL_STATE);
     }
+
     const inputChanged = (event) => {
         setItem({...item, [event.target.name]: event.target.value});
     };
@@ -160,7 +158,6 @@ const EditItem = (props) => {
             </Modal>
         </>
     );
-
 }
 
 export default connect(

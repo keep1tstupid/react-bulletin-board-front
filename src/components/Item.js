@@ -5,6 +5,7 @@ import { deleteItem } from "../redux/actions";
 import {useDispatch} from "react-redux";
 import EditItem from "./modals/EditItem";
 import ApproveItem from "./modals/ApproveItem";
+import ViewItem from "./modals/ViewItem";
 
 
 const Item = (props) => {
@@ -47,6 +48,8 @@ const Item = (props) => {
           </td>
         )}
         <td>
+          <ViewItem itemId={props.id}/>
+          {' '}
           {buttonsVisible && (
             <>
               <EditItem itemId={props.id}/>

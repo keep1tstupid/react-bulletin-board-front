@@ -5,11 +5,11 @@ import { addNewItem } from "../../redux/actions";
 import AuthService from "../../services/auth.service";
 
 // add image preview or at least filename
+// todo: update type selector: add default value
 
 const AddItem = (props) => {
   //console.log(props);
   const currentUser = AuthService.getCurrentUser();
-  const [show, setShow] = useState(false);
   //console.log(currentUser);
 
   const INITIAL_STATE = {
@@ -25,14 +25,9 @@ const AddItem = (props) => {
 
   const [item, setItem] = useState(INITIAL_STATE);
 
+  const [show, setShow] = useState(false);
   const handleShow = () => setShow(true);
-
-  // todo: update type selector: add default value
-
-  const reload = () => window.location.reload();
-  const handleClose = () => {
-    setShow(false);
-  }
+  const handleClose = () => setShow(false);
 
   const inputChanged = (event) => {
     setItem({...item, [event.target.name]: event.target.value});
@@ -47,7 +42,6 @@ const AddItem = (props) => {
     setItem(INITIAL_STATE);
     handleClose();
   }
-
 
   const fileAdded = (event) => {
     //console.log("file added! ", event);
@@ -137,7 +131,7 @@ const AddItem = (props) => {
       </Modal.Body>
     </Modal>
     </>
-  )
+  );
 }
 
 export default connect(
