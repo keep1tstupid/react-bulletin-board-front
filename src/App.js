@@ -1,10 +1,10 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import LoginView from "./views/LoginView";
-import HomeView from "./views/HomeView";
-import ModerateItemView from "./views/ModerateItemView";
-import MyItemsView from "./views/MyItemsView";
+import LoginView from "./views/common/LoginView";
+import HomeView from "./views/common/HomeView";
+import ModerateItemView from "./views/moderator/ModerateItemView";
+import MyItemsView from "./views/common/MyItemsView";
 
 
 function App() {

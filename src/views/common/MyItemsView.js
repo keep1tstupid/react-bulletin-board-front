@@ -1,7 +1,7 @@
 import React from 'react';
-import Header from "../components/Header";
+import Header from "../../components/Header";
 import {Container} from "react-bootstrap";
-import UserItemList from "../components/ItemLists/UserItemList";
+import UserItemList from "../../components/ItemLists/UserItemList";
 
 const MyItemsView = () => {
   return (
