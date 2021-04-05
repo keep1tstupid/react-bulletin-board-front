@@ -64,7 +64,7 @@ const AddItem = (props) => {
       onExit={handleClose}
     >
       <Modal.Header>
-        <Modal.Title>Add New Item YaY</Modal.Title>
+        <Modal.Title>Add New Item</Modal.Title>
       </Modal.Header>
       <Modal.Body>
       <Form onSubmit={handleSubmit}>

@@ -74,7 +74,7 @@ const EditItem = (props) => {
                 onExit={handleClose}
             >
                 <Modal.Header>
-                    <Modal.Title>Edit Item YaY</Modal.Title>
+                    <Modal.Title>Edit Item</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     <Form onSubmit={handleSubmit}>
