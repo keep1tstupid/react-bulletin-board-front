@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
 import Header from "../components/Header";
-import ItemList from "../components/ItemList";
+import ItemList from "../components/ItemLists/ItemList";
 import {Container} from "react-bootstrap";
 import {useDispatch} from "react-redux";
 import { fetchAllItems } from "../redux/actions";

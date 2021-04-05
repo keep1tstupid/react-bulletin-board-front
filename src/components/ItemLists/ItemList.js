@@ -1,9 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Table, Container } from 'react-bootstrap';
-import { getItemsForUsersList } from '../redux/selectors'
-import Item from "./Item";
-import AuthService from "../services/auth.service";
+import { getItemsForUsersList } from '../../redux/selectors'
+import Item from "../Item";
+import AuthService from "../../services/auth.service";
 
 
 const ItemList = (props) => {

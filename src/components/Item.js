@@ -16,7 +16,7 @@ const Item = (props) => {
 
     if (currentUser.roles.includes("ROLE_ADMIN") ||
         currentUser.roles.includes("ROLE_MODERATOR") ||
-        currentUser.username === props.author) {
+        currentLocation === '/my-items') {
       setButtonsVisible(true);
     }
     if ((currentUser.roles.includes("ROLE_ADMIN") ||
@@ -41,6 +41,11 @@ const Item = (props) => {
         <td>{props.title}</td>
         <td>{props.type}</td>
         <td>{props.description}</td>
+        {props.view === 'userList' && (
+          <td>
+            <p>{props.state}</p>
+          </td>
+        )}
         <td>
           {buttonsVisible && (
             <>

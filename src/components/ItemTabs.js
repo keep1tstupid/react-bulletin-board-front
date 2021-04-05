@@ -1,6 +1,6 @@
 import React from 'react';
 import { Container, Tabs, Tab, } from 'react-bootstrap';
-import ItemList from "./ItemList";
+import ItemList from "./ItemLists/ItemList";
 
 const ItemTabs = () => {
 
