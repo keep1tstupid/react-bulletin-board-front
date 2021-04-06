@@ -4,7 +4,7 @@ import Header from "../../components/Header";
 import ItemTabs from "../../components/ItemTabs";
 import AddItem from "../../components/modals/AddItem";
 import {useDispatch} from "react-redux";
-import { fetchAllItems } from "../../redux/actions";
+import { fetchAllItems } from "../../redux/items-actions";
 
 const HomeView = () => {
   const dispatch = useDispatch()

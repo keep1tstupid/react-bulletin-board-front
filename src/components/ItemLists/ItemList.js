@@ -8,6 +8,7 @@ import AuthService from "../../services/auth.service";
 
 const ItemList = (props) => {
   const items = props.items || [];
+
   return (
     <div>
       <Container className={'mt-3 pl-0 pr-0'}>

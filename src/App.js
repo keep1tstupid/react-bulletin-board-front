@@ -5,6 +5,7 @@ import LoginView from "./views/common/LoginView";
 import HomeView from "./views/common/HomeView";
 import ModerateItemView from "./views/moderator/ModerateItemView";
 import MyItemsView from "./views/common/MyItemsView";
+import UsersListView from "./views/admin/UsersListView";
 
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
           <Route exact path={["/items"]} component={HomeView} />
           <Route exact path="/moderation" component={ModerateItemView}/>
           <Route exact path="/my-items" component={MyItemsView}/>
+          <Route exact path="/users" component={UsersListView}/>
         </Switch>
       </BrowserRouter>
     </div>

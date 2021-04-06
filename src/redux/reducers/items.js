@@ -4,7 +4,6 @@ const INITIAL_STATE = {
   types: [],
   attachment: [],
   allAttachments: [],
-  // typeFilter: 'SHOW_ALL',
 };
 
 const itemReducer = (state = INITIAL_STATE, action) => {
@@ -16,21 +15,9 @@ const itemReducer = (state = INITIAL_STATE, action) => {
         allAttachments: action.data.files
       };
     }
-    // case 'ADD_FETCHED_ITEM_TYPES': {
-    //   return { ...state, types: action.data };
-    // }
     case 'ADD_FILE': {
       return { ...state, attachment: action.data }
     }
-    // case 'GET_ALL_FILES': {
-    //   return { ...state, attachments: action.data }
-    // }
-    // case 'ADD_ALL_FILES': {
-    //   return { ...state, allAttachments: action.data }
-    // }
-    // case 'SET_TYPE_FILTER': {
-    //   return { ...state, typeFilter: action.data }
-    // }
     default: {
       return state;
     }

@@ -1,7 +1,6 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
 import http from "../http-common";
-import { addFetchedItems, addFile, fetchAllItems as fetchAllItemsAction } from './actions';
-
+import { addFetchedItems, addFile, fetchAllItems as fetchAllItemsAction } from './items-actions';
 
 // saga for all items and attachments
 function* fetchAllItems() {
@@ -19,7 +18,6 @@ function* fetchAllItems() {
       yield put(addFetchedItems(result));
     } catch (err) {
       // Handle error
-      // yield put(showErrorPopup('SNAP!'));
       console.error(err);
     }
 }
@@ -39,7 +37,6 @@ function* uploadFile(action) {
     console.error(err);
   }
 }
-
 
 // saga to add new item
 function* addNewItem(action) {

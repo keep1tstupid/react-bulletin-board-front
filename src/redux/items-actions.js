@@ -1,5 +1,4 @@
 
-// actions for items
 export const fetchAllItems = () => ({
   type: 'FETCH_ALL_ITEMS',
   data: null,
@@ -34,14 +33,4 @@ export const addFile = (data) => ({
   data: data,
 })
 
-// // actions for filters for selectors
-// export const setStateFilter = (data) => ({
-//   type: 'SET_STATE_FILTER',
-//   data: data,
-// })
-//
-// export const setTypeFilter = (data) => ({
-//   type: 'SET_TYPE_FILTER',
-//   data: data,
-// })
 

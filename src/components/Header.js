@@ -12,6 +12,9 @@ const Header = () => {
     if (currentRoles.includes("ROLE_ADMIN") || currentRoles.includes("ROLE_MODERATOR")) {
       setModerationAvailable(true);
     }
+    if (currentRoles.includes("ROLE_ADMIN")) {
+      setUsersListAvailable(true);
+    }
   }, [currentUser]);
 
   const logOut = () => {
@@ -19,6 +22,7 @@ const Header = () => {
   };
 
   const [moderationAvailable, setModerationAvailable] = useState(false);
+  const [usersListAvailable, setUsersListAvailable] = useState(false);
 
   return (
     <div>
@@ -29,7 +33,10 @@ const Header = () => {
             <Nav.Link as={NavLink} to="/home">All items</Nav.Link>
             <Nav.Link as={NavLink} to="/my-items">My items</Nav.Link>
             {moderationAvailable && (
-            <Nav.Link as={NavLink} to="/moderation">Moderation</Nav.Link>
+              <Nav.Link as={NavLink} to="/moderation">Moderation</Nav.Link>
+            )}
+            {usersListAvailable && (
+              <Nav.Link as={NavLink} to="/users">Users</Nav.Link >
             )}
           </Nav>
           <Form inline>

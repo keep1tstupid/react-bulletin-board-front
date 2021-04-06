@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Modal, Form, Button } from 'react-bootstrap';
 import { connect, useDispatch } from "react-redux";
-import { editItem } from "../../redux/actions";
+import { editItem } from "../../redux/items-actions";
 
 // todo: update type selector: add default value
 

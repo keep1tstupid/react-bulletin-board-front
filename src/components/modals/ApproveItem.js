@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Button, Modal } from "react-bootstrap";
 import { connect, useDispatch } from "react-redux";
-import { editItem } from "../../redux/actions";
+import { editItem } from "../../redux/items-actions";
 
 
 const ApproveItem = (props) => {

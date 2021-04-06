@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import { Button } from 'react-bootstrap';
 import AuthService from "../services/auth.service";
-import { deleteItem } from "../redux/actions";
+import { deleteItem } from "../redux/items-actions";
 import {useDispatch} from "react-redux";
 import EditItem from "./modals/EditItem";
 import ApproveItem from "./modals/ApproveItem";

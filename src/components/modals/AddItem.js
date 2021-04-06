@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Modal, Form, Button } from 'react-bootstrap';
 import {connect, useDispatch} from "react-redux";
-import { addNewItem } from "../../redux/actions";
+import { addNewItem } from "../../redux/items-actions";
 import AuthService from "../../services/auth.service";
 import AlertSave from "../AlertMsg";
 
