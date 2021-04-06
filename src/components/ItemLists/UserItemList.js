@@ -18,7 +18,7 @@ const UserItemList = (props) => {
               <th width='20%'>Type</th>
               <th width='20%'>Description</th>
               <th width='20%'>State</th>
-              <th width='20%'></th>
+              <th width='20%'>Actions</th>
             </tr>
           </thead>
           <tbody>

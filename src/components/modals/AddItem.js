@@ -3,14 +3,12 @@ import { Modal, Form, Button } from 'react-bootstrap';
 import {connect, useDispatch} from "react-redux";
 import { addNewItem } from "../../redux/actions";
 import AuthService from "../../services/auth.service";
+import AlertSave from "../AlertMsg";
 
 // add image preview or at least filename
-// todo: update type selector: add default value
 
 const AddItem = (props) => {
-  //console.log(props);
   const currentUser = AuthService.getCurrentUser();
-  //console.log(currentUser);
 
   const INITIAL_STATE = {
     author: currentUser.username,
@@ -24,7 +22,7 @@ const AddItem = (props) => {
   }
 
   const [item, setItem] = useState(INITIAL_STATE);
-
+  const [submitted, setSubmitted] = useState(false)
   const [show, setShow] = useState(false);
   const handleShow = () => setShow(true);
   const handleClose = () => setShow(false);
@@ -36,10 +34,11 @@ const AddItem = (props) => {
   const dispatch = useDispatch();
 
   const handleSubmit = (event) => {
-    console.log(item);
+    setSubmitted(true);
     event.preventDefault();
     dispatch(addNewItem(item));
     setItem(INITIAL_STATE);
+    console.log("submitted: ", submitted);
     handleClose();
   }
 
@@ -90,6 +89,7 @@ const AddItem = (props) => {
             name='type'
             onChange={inputChanged}
           >
+            <option disabled value="" selected hidden> SELECT </option>
             {props.types.map((type, index) => <option key={index}> {type} </option>) }
           </Form.Control>
         </Form.Group>
@@ -130,6 +130,14 @@ const AddItem = (props) => {
       </Form>
       </Modal.Body>
     </Modal>
+      {submitted && (
+        <>
+          <AlertSave
+            variant='success'
+            msg='your item is sent for moderation now'
+          />
+        </>
+      )}
     </>
   );
 }
@@ -138,4 +146,4 @@ export default connect(
   state => {
     return { types: state.items.types, }
   }, {}
-)(AddItem);
+)(AddItem)
