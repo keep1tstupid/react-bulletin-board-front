@@ -5,6 +5,7 @@ import { getItemsForUsersList } from '../../redux/selectors'
 import Item from "../Item";
 import AuthService from "../../services/auth.service";
 
+// todo : think about making separated list for home page
 
 const ItemList = (props) => {
   const items = props.items || [];
