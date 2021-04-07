@@ -45,10 +45,6 @@ export default connect(
       return {
         items: state.items.itemData.filter(item => item.state === 'IN_MODERATION')
       }
-    } else if (currentLocation === '/my-items') {
-        return {
-          items: state.items.itemData.filter(item => item.author === currentUser)
-        }
     }
   }, {}
 )(ItemList);

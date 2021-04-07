@@ -12,18 +12,19 @@ const Item = (props) => {
   useEffect(() => {
     const currentUser = AuthService.getCurrentUser();
     const currentLocation = window.location.pathname;
-
     // console.log('LOCATION', currentLocation);
 
-    if (currentUser.roles.includes("ROLE_ADMIN") ||
-        currentUser.roles.includes("ROLE_MODERATOR") ||
-        currentLocation === '/my-items') {
+    // currentUser.roles.includes("ROLE_ADMIN") ||
+    // currentUser.roles.includes("ROLE_MODERATOR") ||
+
+    if (currentLocation === '/my-items') {
       setButtonsVisible(true);
     }
     if ((currentUser.roles.includes("ROLE_ADMIN") ||
       currentUser.roles.includes("ROLE_MODERATOR")) &&
       currentLocation === '/moderation') {
       setApprovalAvailable(true);
+      setButtonsVisible(true);
     }
   }, [props])
 
