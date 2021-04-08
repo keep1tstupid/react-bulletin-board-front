@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { Button, Modal } from "react-bootstrap";
 import { connect, useDispatch } from "react-redux";
 import { editItem } from "../../redux/items-actions";
+import AlertMsg from "../AlertMsg";
+import {setNotification} from "../../redux/notification-actions";
 
 
 const ApproveItem = (props) => {
@@ -16,6 +18,7 @@ const ApproveItem = (props) => {
   const handleApprove = () => {
     // console.log("APPROVED ITEM: ", item);
     dispatch(editItem(item));
+    dispatch(setNotification({variant: 'info', msg: 'item is approved'}))
     handleClose();
   }
 

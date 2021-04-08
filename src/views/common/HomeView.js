@@ -1,26 +1,44 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import { Container } from 'react-bootstrap';
 import Header from "../../components/Header";
 import ItemTabs from "../../components/ItemTabs";
 import AddItem from "../../components/modals/AddItem";
-import {useDispatch} from "react-redux";
+import {connect, useDispatch} from "react-redux";
 import { fetchAllItems } from "../../redux/items-actions";
+import { getNotification } from "../../redux/notification-actions";
+import AlertMsg from "../../components/AlertMsg";
 
-const HomeView = () => {
-  const dispatch = useDispatch()
+const HomeView = (props) => {
+  const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchAllItems());
+    dispatch(getNotification());
   }, [dispatch])
+
+  const showAlert = props.notification;
+  console.log(showAlert);
 
   return (
     <>
       <Header />
-      <Container className={'mt-3'}>
-        <AddItem />
+      <Container>
+        {showAlert && (
+            <AlertMsg
+              variant={props.notification.variant}
+              msg={props.notification.msg}
+            />
+        )}
+        <Container className={'mt-3'}>
+          <AddItem />
+        </Container>
+        <ItemTabs />
       </Container>
-      <ItemTabs />
     </>
-  );
+  )
 }
 
-export default HomeView;
+export default connect(
+  state => {
+    return { notification: state.notification }
+  }, {}
+)(HomeView)
