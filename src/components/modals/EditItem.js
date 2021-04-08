@@ -3,7 +3,7 @@ import { Modal, Form, Button } from 'react-bootstrap';
 import { connect, useDispatch } from "react-redux";
 import { editItem } from "../../redux/items-actions";
 
-// todo: update type selector: add default value
+// todo: WHERE IS FILE NAME AGAIN?!
 
 const EditItem = (props) => {
 

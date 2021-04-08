@@ -9,10 +9,8 @@ import { getNotification } from "../../redux/notification-actions";
 import AlertMsg from "../../components/AlertMsg";
 
 // todo : add safe deleting for moderator (permanent deleting should be for adm only)
-// todo : remove editing for moderator (should be decline or something)
-// todo : approve and decline in view modal?
-// todo : add alerts for actions on the page
-// todo : pagination
+// todo : add Decline
+// todo : pagination?
 
 const ModerateItemView = (props) => {
   const dispatch = useDispatch();

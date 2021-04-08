@@ -86,8 +86,10 @@ const AddItem = (props) => {
               as='select'
               name='type'
               onChange={inputChanged}
+              defaultValue={'SELECT'}
             >
-              <option disabled value="" selected hidden> SELECT </option>
+              {/*<option disabled value="" selected hidden> SELECT </option>*/}
+              <option value='SELECT' disabled> SELECT </option>
               {props.types.map((type, index) => <option key={index}> {type} </option>) }
             </Form.Control>
           </Form.Group>

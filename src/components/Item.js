@@ -13,22 +13,24 @@ const Item = (props) => {
     const currentUser = AuthService.getCurrentUser();
     const currentLocation = window.location.pathname;
     // console.log('LOCATION', currentLocation);
-
     // currentUser.roles.includes("ROLE_ADMIN") ||
     // currentUser.roles.includes("ROLE_MODERATOR") ||
 
     if (currentLocation === '/my-items') {
-      setButtonsVisible(true);
+      setEditAvailable(true);
+      setDelAvailable(true);
+
     }
     if ((currentUser.roles.includes("ROLE_ADMIN") ||
       currentUser.roles.includes("ROLE_MODERATOR")) &&
       currentLocation === '/moderation') {
       setApprovalAvailable(true);
-      setButtonsVisible(true);
+      setDelAvailable(true);
     }
   }, [props])
 
-  const [buttonsVisible, setButtonsVisible] = useState(false);
+  const [editAvailable, setEditAvailable] = useState(false);
+  const [delAvailable, setDelAvailable] = useState(false);
   const [approvalAvailable, setApprovalAvailable] = useState(false);
 
   const dispatch = useDispatch();
@@ -51,14 +53,18 @@ const Item = (props) => {
         <td>
           <ViewItem itemId={props.id}/>
           {' '}
-          {buttonsVisible && (
+          {editAvailable && (
             <>
               <EditItem itemId={props.id}/>
               {' '}
+            </>
+          )}
+          {delAvailable && (
+            <>
               <Button
-              variant='outline-danger'
-              onClick={handleDelete}>
-              Del
+                variant='outline-danger'
+                onClick={handleDelete}>
+                Del
               </Button>
               {' '}
             </>
