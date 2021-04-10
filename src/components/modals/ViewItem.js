@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import {Modal, Form, Button, ModalFooter} from 'react-bootstrap';
-import { connect, useDispatch } from "react-redux";
+import {Modal, Button, ModalFooter} from 'react-bootstrap';
+import { connect } from "react-redux";
 
 const ViewItem = (props) => {
   const item = props.itemBeingViewed;
@@ -25,8 +25,9 @@ const ViewItem = (props) => {
           <Modal.Title>Item details: </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <p> {item.title} </p>
-          <p> {item.description} </p>
+          <p> Title: {item.title} </p>
+          <p> Description: {item.description} </p>
+          <p> Contact information: {item.contactInfo} </p>
         </Modal.Body>
         <ModalFooter>
           <Button onClick={handleClose}>Close</Button>

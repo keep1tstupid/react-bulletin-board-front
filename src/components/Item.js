@@ -1,8 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import { Button } from 'react-bootstrap';
 import AuthService from "../services/auth.service";
-import { deleteItem } from "../redux/items-actions";
-import {useDispatch} from "react-redux";
 import EditItem from "./modals/EditItem";
 import ApproveItem from "./modals/ApproveItem";
 import ViewItem from "./modals/ViewItem";
@@ -20,8 +17,6 @@ const Item = (props) => {
     const currentUser = AuthService.getCurrentUser();
     const currentLocation = window.location.pathname;
     // console.log('LOCATION', currentLocation);
-    // currentUser.roles.includes("ROLE_ADMIN") ||
-    // currentUser.roles.includes("ROLE_MODERATOR") ||
 
     if (currentLocation === '/my-items') {
       setEditAvailable(true);

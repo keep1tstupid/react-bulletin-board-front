@@ -6,7 +6,7 @@ function* fetchAllUsers() {
   try {
     const users = yield call(http.get, '/api/users');
     const result = users.data;
-    console.log(result);
+    // console.log(result);
     yield put(addFetchedUsers(result));
   } catch (err) {
     console.error(err);

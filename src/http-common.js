@@ -1,6 +1,6 @@
 import axios from "axios";
 
-console.log(process.env)
+// console.log(process.env)
 
 export default axios.create({
   // baseURL: "https://bboard-app.herokuapp.com",

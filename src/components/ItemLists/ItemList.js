@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { Table, Container } from 'react-bootstrap';
 import { getItemsForUsersList } from '../../redux/selectors'
 import Item from "../Item";
-import AuthService from "../../services/auth.service";
 
 // todo : think about making separated list for home page
 
@@ -33,11 +32,9 @@ const ItemList = (props) => {
 
 export default connect(
   (state, ownProps) => {
-    const currentUser = AuthService.getCurrentUser();
+    // const currentUser = AuthService.getCurrentUser();
     const currentLocation = window.location.pathname;
 
-    // console.log(ownProps.type);
-    // console.log(state);
     if (ownProps.type) {
       return {
         items: getItemsForUsersList(state)(ownProps.type)

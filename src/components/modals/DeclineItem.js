@@ -6,10 +6,9 @@ import { setNotification } from "../../redux/notification-actions";
 
 
 const DeclineItem = (props) => {
-  // console.log(props);
   const item = ({...props.itemBeingDeclined, state: 'DECLINED'});
-  const [show, setShow] = useState(false);
 
+  const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 

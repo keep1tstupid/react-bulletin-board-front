@@ -6,7 +6,7 @@ import AuthService from "../../services/auth.service";
 
 const UserItemList = (props) => {
   const items =  props.items || [];
-  console.log(items)
+  // console.log(items);
 
   return (
     <div>
@@ -33,7 +33,7 @@ const UserItemList = (props) => {
 export default connect(
   state => {
     const currentUser = AuthService.getCurrentUser().username;
-    console.log(currentUser)
+    // console.log(currentUser);
     return { items: state.items.itemData.filter(item => item.author === currentUser) }
   }, {}
 )(UserItemList)

@@ -15,7 +15,7 @@ const MyItemsView = (props) => {
   }, [dispatch])
 
   const showAlert = props.notification;
-  console.log(showAlert);
+  // console.log(showAlert);
 
   return (
     <>

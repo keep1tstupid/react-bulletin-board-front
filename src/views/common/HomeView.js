@@ -1,9 +1,9 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect } from 'react';
 import { Container } from 'react-bootstrap';
 import Header from "../../components/Header";
 import ItemTabs from "../../components/ItemTabs";
 import AddItem from "../../components/modals/AddItem";
-import {connect, useDispatch} from "react-redux";
+import { connect, useDispatch } from "react-redux";
 import { fetchAllItems } from "../../redux/items-actions";
 import { getNotification } from "../../redux/notification-actions";
 import AlertMsg from "../../components/AlertMsg";
@@ -16,7 +16,7 @@ const HomeView = (props) => {
   }, [dispatch])
 
   const showAlert = props.notification;
-  console.log(showAlert);
+  // console.log(showAlert);
 
   return (
     <>
