@@ -2,8 +2,7 @@ import React, { useState } from 'react';
 import { Button, Modal } from "react-bootstrap";
 import { connect, useDispatch } from "react-redux";
 import { editItem } from "../../redux/items-actions";
-import AlertMsg from "../AlertMsg";
-import {setNotification} from "../../redux/notification-actions";
+import { setNotification } from "../../redux/notification-actions";
 
 
 const ApproveItem = (props) => {

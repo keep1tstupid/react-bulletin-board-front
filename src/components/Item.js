@@ -6,6 +6,7 @@ import {useDispatch} from "react-redux";
 import EditItem from "./modals/EditItem";
 import ApproveItem from "./modals/ApproveItem";
 import ViewItem from "./modals/ViewItem";
+import DeleteItem from "./modals/DeleteItem";
 
 
 const Item = (props) => {
@@ -61,11 +62,7 @@ const Item = (props) => {
           )}
           {delAvailable && (
             <>
-              <Button
-                variant='outline-danger'
-                onClick={handleDelete}>
-                Del
-              </Button>
+              <DeleteItem itemId={props.id}/>
               {' '}
             </>
           )}
