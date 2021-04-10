@@ -7,9 +7,15 @@ import EditItem from "./modals/EditItem";
 import ApproveItem from "./modals/ApproveItem";
 import ViewItem from "./modals/ViewItem";
 import DeleteItem from "./modals/DeleteItem";
+import DeclineItem from "./modals/DeclineItem";
 
 
 const Item = (props) => {
+  const [editAvailable, setEditAvailable] = useState(false);
+  const [delAvailable, setDelAvailable] = useState(false);
+  const [approvalAvailable, setApprovalAvailable] = useState(false);
+  const [declineAvailable, setDeclineAvailable] = useState(false);
+
   useEffect(() => {
     const currentUser = AuthService.getCurrentUser();
     const currentLocation = window.location.pathname;
@@ -26,19 +32,10 @@ const Item = (props) => {
       currentUser.roles.includes("ROLE_MODERATOR")) &&
       currentLocation === '/moderation') {
       setApprovalAvailable(true);
-      setDelAvailable(true);
+      setDeclineAvailable(true);
     }
   }, [props])
 
-  const [editAvailable, setEditAvailable] = useState(false);
-  const [delAvailable, setDelAvailable] = useState(false);
-  const [approvalAvailable, setApprovalAvailable] = useState(false);
-
-  const dispatch = useDispatch();
-
-  const handleDelete = () => {
-    dispatch(deleteItem(props));
-  }
 
   return (
     <>
@@ -67,9 +64,14 @@ const Item = (props) => {
             </>
           )}
           {approvalAvailable && (
-            <ApproveItem itemId={props.id}/>
+            <>
+              <ApproveItem itemId={props.id}/>
+              {' '}
+            </>
           )}
-
+          {declineAvailable && (
+            <DeclineItem itemId={props.id}/>
+          )}
         </td>
       </tr>
     </>

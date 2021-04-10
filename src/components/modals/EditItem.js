@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Modal, Form, Button } from 'react-bootstrap';
 import { connect, useDispatch } from "react-redux";
 import { editItem } from "../../redux/items-actions";
+import {setNotification} from "../../redux/notification-actions";
 
 // todo: WHERE IS FILE NAME AGAIN?!
 
@@ -58,6 +59,7 @@ const EditItem = (props) => {
     const handleSubmit = (event) => {
         event.preventDefault();
         dispatch(editItem(item));
+        dispatch(setNotification({variant: 'warning', msg: 'item is updated and sent for moderation'}))
         handleClose();
     }
 
