@@ -1,9 +1,24 @@
 import React, { useState } from 'react';
-import {Modal, Button, ModalFooter} from 'react-bootstrap';
+import {Modal, Button, ModalFooter, Form} from 'react-bootstrap';
 import { connect } from "react-redux";
 
 const ViewItem = (props) => {
+
+  const getFileAttributes = (attachmentId) => {
+    const file = props.attachments.find((file) => file.id === attachmentId)
+    const path = file ? `${file.url}/${file.name}`: null;
+    const name = file ? file.name : null;
+    const exist = Boolean(file);
+
+    return {
+      name,
+      path,
+      exist,
+    }
+  }
+
   const item = props.itemBeingViewed;
+  const fileAttributes = getFileAttributes(item.attachmentId);
 
   const [show, setShow] = useState(false);
   const handleShow = () => setShow(true);
@@ -27,6 +42,12 @@ const ViewItem = (props) => {
         <Modal.Body>
           <p> Title: {item.title} </p>
           <p> Description: {item.description} </p>
+          { fileAttributes.exist &&
+          (<>
+            <p>Attached file: {fileAttributes.name}</p>
+            {/*<img src={fileAttributes.path} alt="attachment"/>*/}
+          </>)
+          }
           <p> Contact information: {item.contactInfo} </p>
         </Modal.Body>
         <ModalFooter>
@@ -40,7 +61,8 @@ const ViewItem = (props) => {
 export default connect(
   (state, ownProps) => {
     return {
-      itemBeingViewed: state.items.itemData.find((item) => item.id === ownProps.itemId)
+      itemBeingViewed: state.items.itemData.find((item) => item.id === ownProps.itemId),
+      attachments: state.items.allAttachments,
     }
   }, {}
 )(ViewItem)
