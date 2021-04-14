@@ -6,10 +6,10 @@ const ViewItem = (props) => {
 
   const getFileAttributes = (attachmentId) => {
     const file = props.attachments.find((file) => file.id === attachmentId)
-    const path = file ? `${file.url}/${file.name}`: null;
+    console.log(file);
+    const path = file ? file.url : null;
     const name = file ? file.name : null;
     const exist = Boolean(file);
-
     return {
       name,
       path,
@@ -45,7 +45,9 @@ const ViewItem = (props) => {
           { fileAttributes.exist &&
           (<>
             <p>Attached file: {fileAttributes.name}</p>
-            {/*<img src={fileAttributes.path} alt="attachment"/>*/}
+            <div style={{maxWidth: 300}}>
+              <img src={fileAttributes.path} alt="attachment" className="img-fluid" />
+            </div>
           </>)
           }
           <p> Contact information: {item.contactInfo} </p>

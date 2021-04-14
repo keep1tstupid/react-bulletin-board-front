@@ -1,6 +1,7 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
 import http from "../http-common";
 import { addFetchedItems, addFile, fetchAllItems as fetchAllItemsAction } from './items-actions';
+import {setNotification} from "./notification-actions";
 
 // saga for all items and attachments
 function* fetchAllItems() {
@@ -24,6 +25,7 @@ function* fetchAllItems() {
 
 
 // saga to add file
+// handle error - wrong file format, 500
 function* uploadFile(action) {
   console.log("I tried to add: ", action.data.file, " for ", action.data.id);
   try {
