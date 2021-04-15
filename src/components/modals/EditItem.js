@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Modal, Form, Button } from 'react-bootstrap';
 import { connect, useDispatch } from "react-redux";
 import { editItem } from "../../redux/items-actions";
+import {setNotification} from "../../redux/notification-actions";
 
 
 const EditItem = (props) => {
@@ -56,6 +57,7 @@ const EditItem = (props) => {
     const handleSubmit = (event) => {
         event.preventDefault();
         dispatch(editItem(item));
+        dispatch(setNotification({variant: 'success', msg: 'your item is sent for moderation now'}));
         handleClose();
     }
 

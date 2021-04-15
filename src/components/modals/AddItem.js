@@ -3,6 +3,7 @@ import { Modal, Form, Button } from 'react-bootstrap';
 import {connect, useDispatch} from "react-redux";
 import { addNewItem } from "../../redux/items-actions";
 import AuthService from "../../services/auth.service";
+import {setNotification} from "../../redux/notification-actions";
 
 
 const AddItem = (props) => {
@@ -33,6 +34,7 @@ const AddItem = (props) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     dispatch(addNewItem(item));
+    dispatch(setNotification({variant: 'success', msg: 'your item is sent for moderation now'}));
     setItem(INITIAL_STATE);
     handleClose();
   }

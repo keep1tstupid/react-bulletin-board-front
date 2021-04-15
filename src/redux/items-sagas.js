@@ -80,7 +80,7 @@ function* editItem(action) {
   try {
     const url = "/api/items/" + action.data.id;
     const response = yield call(http.put, url, action.data)
-    yield put(setNotification({variant: 'success', msg: 'your item is sent for moderation now'}))
+    //yield put(setNotification({variant: 'success', msg: 'your item is sent for moderation now'}))
     if (action.data.attachmentFile) {
       console.log("response.data.id = ", response.data.id,
         "action.data.attachmentFile = ", action.data.attachmentFile);
