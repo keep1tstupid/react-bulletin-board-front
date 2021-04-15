@@ -2,15 +2,13 @@ import React, { useState } from 'react';
 import { Modal, Form, Button } from 'react-bootstrap';
 import { connect, useDispatch } from "react-redux";
 import { editItem } from "../../redux/items-actions";
-import {setNotification} from "../../redux/notification-actions";
 
-// todo: WHERE IS FILE NAME AGAIN?!
 
 const EditItem = (props) => {
 
     const getFileAttributes = (attachmentId) => {
         const file = props.attachments.find((file) => file.id === attachmentId)
-        const path = file ? `${file.url}/${file.name}`: null;
+        const path = file ? file.url : null;
         const name = file ? file.name : null;
         const exist = Boolean(file);
 
@@ -42,7 +40,6 @@ const EditItem = (props) => {
     const handleShow = () => setShow(true);
     const handleClose = () => {
         setShow(false);
-        // setItem(INITIAL_STATE);
     }
 
     const inputChanged = (event) => {
@@ -50,16 +47,15 @@ const EditItem = (props) => {
     };
 
     const fileAdded = (event) => {
-        //console.log("file added! ", event);
+        // console.log("file added! ", event);
         const file = event.target.files[0];
-        console.log("file is: ", file);
+        // console.log("file is: ", file);
         setItem({...item, attachmentFile: file})
     }
 
     const handleSubmit = (event) => {
         event.preventDefault();
         dispatch(editItem(item));
-        dispatch(setNotification({variant: 'warning', msg: 'item is updated and sent for moderation'}))
         handleClose();
     }
 
@@ -120,7 +116,9 @@ const EditItem = (props) => {
                         {(fileAttributes.exist) ?
                           (<>
                               <p>Existing file: {fileAttributes.name}</p>
-                              {/*<img src={fileAttributes.path} alt="attachment"/>*/}
+                              <div style={{maxWidth: 300}}>
+                                  <img src={fileAttributes.path} alt="attachment" className="img-fluid" />
+                              </div>
                               <Form.Group>
                                   <Form.File
                                     id='FormControlFile'

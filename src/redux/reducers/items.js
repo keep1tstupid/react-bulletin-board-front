@@ -25,5 +25,3 @@ const itemReducer = (state = INITIAL_STATE, action) => {
 }
 
 export default itemReducer;
-
-// https://github.com/reduxjs/reselect - to filter data by type and state

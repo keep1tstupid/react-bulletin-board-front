@@ -3,9 +3,7 @@ import { Modal, Form, Button } from 'react-bootstrap';
 import {connect, useDispatch} from "react-redux";
 import { addNewItem } from "../../redux/items-actions";
 import AuthService from "../../services/auth.service";
-import {setNotification} from "../../redux/notification-actions";
 
-// add image preview or at least filename
 
 const AddItem = (props) => {
   const currentUser = AuthService.getCurrentUser();
@@ -35,15 +33,13 @@ const AddItem = (props) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     dispatch(addNewItem(item));
-    dispatch(setNotification({variant: 'success', msg: 'your item is sent for moderation now'}))
     setItem(INITIAL_STATE);
     handleClose();
   }
 
   const fileAdded = (event) => {
-    //console.log("file added! ", event);
     const file = event.target.files[0];
-    console.log("file is: ", file);
+    // console.log("file is: ", file);
     setItem({...item, attachmentFile: file})
   }
 

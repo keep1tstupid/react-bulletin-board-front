@@ -23,9 +23,7 @@ function* fetchAllItems() {
     }
 }
 
-
 // saga to add file
-// handle error - wrong file format, 500
 function* uploadFile(action) {
   console.log("I tried to add: ", action.data.file, " for ", action.data.id);
   try {
@@ -34,17 +32,22 @@ function* uploadFile(action) {
     data.append("id", action.data.id);
 
     yield call(http.post, "/api/upload", data)
-    console.log("I tried to add: ", data);
+    // console.log("I tried to add: ", data);
   } catch (err) {
-    console.error(err);
+    // console.error(err);
+    yield put(setNotification({
+      variant: 'warning',
+      msg: 'your item is sent for moderation now without attachment!'
+    }))
   }
 }
 
 // saga to add new item
 function* addNewItem(action) {
-  console.log("action file = ", action.data.attachmentFile);
+  //console.log("action file = ", action.data.attachmentFile);
   try {
     const response = yield call(http.post, "/api/items", action.data);
+    yield put(setNotification({variant: 'success', msg: 'your item is sent for moderation now'}))
     //console.log("response = ", response);
     //console.log("action = ", action);
     if (action.data.attachmentFile !== '') {
@@ -56,8 +59,8 @@ function* addNewItem(action) {
     }
     yield put(fetchAllItemsAction());
   } catch (err) {
-    // Handle error
     console.error(err);
+
   }
 }
 
@@ -77,6 +80,7 @@ function* editItem(action) {
   try {
     const url = "/api/items/" + action.data.id;
     const response = yield call(http.put, url, action.data)
+    yield put(setNotification({variant: 'success', msg: 'your item is sent for moderation now'}))
     if (action.data.attachmentFile) {
       console.log("response.data.id = ", response.data.id,
         "action.data.attachmentFile = ", action.data.attachmentFile);

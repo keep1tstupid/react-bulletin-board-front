@@ -32,5 +32,3 @@ export const addFile = (data) => ({
   type: 'ADD_FILE',
   data: data,
 })
-
-

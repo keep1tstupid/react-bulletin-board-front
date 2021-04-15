@@ -31,13 +31,16 @@ const Item = (props) => {
     }
   }, [props])
 
+  const truncate = (text) => {
+    return text.length > 30 ? text.substring(0, 27) + "..." : text;
+  }
 
   return (
     <>
       <tr>
         <td>{props.title}</td>
         <td>{props.type}</td>
-        <td>{props.description}</td>
+        <td>{truncate(props.description)}</td>
         {props.view === 'userList' && (
           <td>
             <p>{props.state}</p>

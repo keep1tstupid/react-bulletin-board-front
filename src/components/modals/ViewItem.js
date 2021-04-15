@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import {Modal, Button, ModalFooter, Form} from 'react-bootstrap';
+import { Modal, Button, ModalFooter } from 'react-bootstrap';
 import { connect } from "react-redux";
 
 const ViewItem = (props) => {
 
   const getFileAttributes = (attachmentId) => {
     const file = props.attachments.find((file) => file.id === attachmentId)
-    console.log(file);
+    // console.log(file);
     const path = file ? file.url : null;
     const name = file ? file.name : null;
     const exist = Boolean(file);
