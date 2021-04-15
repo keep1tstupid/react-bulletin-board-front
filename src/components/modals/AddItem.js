@@ -11,7 +11,7 @@ const AddItem = (props) => {
   const INITIAL_STATE = {
     author: currentUser.username,
     title: '',
-    type: '',
+    type: 'OTHER',
     description: '',
     attachmentFile: '',
     attachmentId: '',
@@ -85,7 +85,7 @@ const AddItem = (props) => {
               defaultValue={'SELECT'}
             >
               {/*<option disabled value="" selected hidden> SELECT </option>*/}
-              <option value='SELECT' disabled> SELECT </option>
+              <option disabled> SELECT </option>
               {props.types.map((type, index) => <option key={index}> {type} </option>) }
             </Form.Control>
           </Form.Group>
@@ -97,6 +97,7 @@ const AddItem = (props) => {
               rows={3}
               name='description'
               onChange={inputChanged}
+              required
             />
           </Form.Group>
 

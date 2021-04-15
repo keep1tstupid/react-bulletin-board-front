@@ -51,6 +51,7 @@ const ViewItem = (props) => {
           </>)
           }
           <p> Contact information: {item.contactInfo} </p>
+          <p> Created by: {item.author}</p>
         </Modal.Body>
         <ModalFooter>
           <Button onClick={handleClose}>Close</Button>
