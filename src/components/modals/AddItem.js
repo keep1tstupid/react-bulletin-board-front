@@ -15,7 +15,7 @@ const AddItem = (props) => {
     type: 'OTHER',
     description: '',
     attachmentFile: '',
-    attachmentId: '',
+    // attachmentId: '',
     contactInfo: '',
     state: 'IN_MODERATION',
   }
