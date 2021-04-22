@@ -1,5 +1,14 @@
 ## Bulletin Board app: front-end part
 
+Deployed to Heroku: https://bb-front-app.herokuapp.com
+
+Credentials: 
+
+| username | password | description |
+| -------- | -------- | ----------- |
+| user  | user  | can create items, see list of created items and their state, all approved items on home page available  |
+| mod  | user  | moderator role, user + can see additional Moderation tab and Approve/Decline items |
+| adm  | user | administrator role, moderator + Users tabs |
 
 ### My progress:
 
