@@ -10,39 +10,41 @@ Credentials:
 | mod  | user  | moderator role, user + can see additional Moderation tab and Approve/Decline items |
 | adm  | user | administrator role, moderator + Users tabs |
 
-### My progress:
 
-**4.5.2021**
 
-Login page:
+[comment]: <> (### My progress:)
 
-![Screenshot](screenshots/5.4.2021/5.4_login.png)
+[comment]: <> (**4.5.2021**)
 
-Home page (admin user):
+[comment]: <> (Login page:)
 
-![Screenshot](screenshots/5.4.2021/5.4_home.png)
+[comment]: <> (![Screenshot]&#40;screenshots/5.4.2021/5.4_login.png&#41;)
 
-Tabs for item types (admin user): 
+[comment]: <> (Home page &#40;admin user&#41;:)
 
-![Screenshot](screenshots/5.4.2021/5.4_tabs.png) 
+[comment]: <> (![Screenshot]&#40;screenshots/5.4.2021/5.4_home.png&#41;)
 
-Add new item modal (admin user):
+[comment]: <> (Tabs for item types &#40;admin user&#41;: )
 
-![Screenshot](screenshots/5.4.2021/5.4_add.png)
+[comment]: <> (![Screenshot]&#40;screenshots/5.4.2021/5.4_tabs.png&#41; )
 
-My items view (admin user):
+[comment]: <> (Add new item modal &#40;admin user&#41;:)
 
-![Screenshot](screenshots/5.4.2021/5.4_my_items.png)
+[comment]: <> (![Screenshot]&#40;screenshots/5.4.2021/5.4_add.png&#41;)
 
-Edit item modal (admin user):
+[comment]: <> (My items view &#40;admin user&#41;:)
 
-![Screenshot](screenshots/5.4.2021/5.4_edit.png)
+[comment]: <> (![Screenshot]&#40;screenshots/5.4.2021/5.4_my_items.png&#41;)
 
-Moderation page (admin user):
+[comment]: <> (Edit item modal &#40;admin user&#41;:)
 
-![Screenshot](screenshots/5.4.2021/5.4_moderation.png)
+[comment]: <> (![Screenshot]&#40;screenshots/5.4.2021/5.4_edit.png&#41;)
 
-Approve item modal (admin user):
+[comment]: <> (Moderation page &#40;admin user&#41;:)
 
-![Screenshot](screenshots/5.4.2021/5.4_approve.png)
+[comment]: <> (![Screenshot]&#40;screenshots/5.4.2021/5.4_moderation.png&#41;)
+
+[comment]: <> (Approve item modal &#40;admin user&#41;:)
+
+[comment]: <> (![Screenshot]&#40;screenshots/5.4.2021/5.4_approve.png&#41;)
 
