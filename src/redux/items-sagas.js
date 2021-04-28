@@ -18,7 +18,6 @@ function* fetchAllItems() {
 
       yield put(addFetchedItems(result));
     } catch (err) {
-      // Handle error
       console.error(err);
     }
 }
