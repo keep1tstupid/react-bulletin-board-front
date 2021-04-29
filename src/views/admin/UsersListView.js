@@ -29,12 +29,10 @@ const UsersListView = (props) => {
             msg={props.notification.msg}
           />
         )}
-        <Container>
-          <AddUser />
-        </Container>
+        <AddUser />
         <h4>Users: </h4>
+        <UserList />
       </Container>
-      <UserList />
     </>
   )
 }

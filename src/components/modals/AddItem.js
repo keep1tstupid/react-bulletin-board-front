@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Modal, Form, Button } from 'react-bootstrap';
+import {Modal, Form, Button, Container} from 'react-bootstrap';
 import {connect, useDispatch} from "react-redux";
 import { addNewItem } from "../../redux/items-actions";
 import AuthService from "../../services/auth.service";
@@ -46,7 +46,7 @@ const AddItem = (props) => {
   }
 
   return (
-    <>
+    <Container className={'mt-3 mb-3 p-0'}>
       <Button variant="primary" onClick={handleShow}>
         Add New Item
       </Button>
@@ -129,7 +129,7 @@ const AddItem = (props) => {
         </Form>
         </Modal.Body>
       </Modal>
-    </>
+    </Container>
   );
 }
 

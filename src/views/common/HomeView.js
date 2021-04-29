@@ -28,9 +28,7 @@ const HomeView = (props) => {
               msg={props.notification.msg}
             />
         )}
-        <Container className={'mt-3'}>
-          <AddItem />
-        </Container>
+        <AddItem />
         <ItemTabs />
       </Container>
     </>

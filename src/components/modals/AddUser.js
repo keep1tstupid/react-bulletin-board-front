@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { Modal, Form, Button } from 'react-bootstrap';
-import {connect, useDispatch} from "react-redux";
+import {Modal, Form, Button, Container} from 'react-bootstrap';
+import { connect, useDispatch } from "react-redux";
 import { addNewUser } from "../../redux/users-actions";
-import {setNotification} from "../../redux/notification-actions";
+import { setNotification } from "../../redux/notification-actions";
 
 
 const AddUser = (props) => {
@@ -32,7 +32,7 @@ const AddUser = (props) => {
   }
 
   return (
-    <>
+    <Container className={'mt-3 mb-3 p-0'}>
       <Button variant="primary" onClick={handleShow}>
         Add New User
       </Button>
@@ -105,7 +105,7 @@ const AddUser = (props) => {
           </Form>
         </Modal.Body>
       </Modal>
-    </>
+    </Container>
   );
 
 }
