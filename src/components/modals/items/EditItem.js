@@ -39,9 +39,7 @@ const EditItem = (props) => {
 
     const [show, setShow] = useState(false);
     const handleShow = () => setShow(true);
-    const handleClose = () => {
-        setShow(false);
-    }
+    const handleClose = () => setShow(false);
 
     const inputChanged = (event) => {
         setItem({...item, [event.target.name]: event.target.value});
