@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Modal, Form, Button } from 'react-bootstrap';
 import { connect, useDispatch } from "react-redux";
-import { editItem } from "../../redux/items-actions";
-import {setNotification} from "../../redux/notification-actions";
+import { editItem } from "../../../redux/items-actions";
+import {setNotification} from "../../../redux/notification-actions";
 
 
 const EditItem = (props) => {

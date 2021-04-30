@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { Container } from 'react-bootstrap';
 import Header from "../../components/Header";
 import ItemTabs from "../../components/ItemTabs";
-import AddItem from "../../components/modals/AddItem";
+import AddItem from "../../components/modals/items/AddItem";
 import { connect, useDispatch } from "react-redux";
 import { fetchAllItems } from "../../redux/items-actions";
 import { getNotification } from "../../redux/notification-actions";

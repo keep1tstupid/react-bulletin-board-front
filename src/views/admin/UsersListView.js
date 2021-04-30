@@ -7,7 +7,7 @@ import {connect, useDispatch} from "react-redux";
 import { fetchAllUsers } from "../../redux/users-actions";
 import AlertMsg from "../../components/AlertMsg";
 import {getNotification} from "../../redux/notification-actions";
-import AddUser from "../../components/modals/AddUser";
+import AddUser from "../../components/modals/users/AddUser";
 
 
 const UsersListView = (props) => {

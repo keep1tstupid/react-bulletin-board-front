@@ -1,10 +1,10 @@
 import React, {useEffect, useState} from 'react';
 import AuthService from "../services/auth.service";
-import EditItem from "./modals/EditItem";
-import ApproveItem from "./modals/ApproveItem";
-import ViewItem from "./modals/ViewItem";
-import DeleteItem from "./modals/DeleteItem";
-import DeclineItem from "./modals/DeclineItem";
+import EditItem from "./modals/items/EditItem";
+import ApproveItem from "./modals/items/ApproveItem";
+import ViewItem from "./modals/items/ViewItem";
+import DeleteItem from "./modals/items/DeleteItem";
+import DeclineItem from "./modals/items/DeclineItem";
 
 
 const Item = (props) => {

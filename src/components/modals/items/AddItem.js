@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import {Modal, Form, Button, Container} from 'react-bootstrap';
 import {connect, useDispatch} from "react-redux";
-import { addNewItem } from "../../redux/items-actions";
-import AuthService from "../../services/auth.service";
-import {setNotification} from "../../redux/notification-actions";
+import { addNewItem } from "../../../redux/items-actions";
+import AuthService from "../../../services/auth.service";
+import {setNotification} from "../../../redux/notification-actions";
 
 
 const AddItem = (props) => {

@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import {Modal, Form, Button, Container} from 'react-bootstrap';
 import { connect, useDispatch } from "react-redux";
-import { addNewUser } from "../../redux/users-actions";
-import { setNotification } from "../../redux/notification-actions";
+import { addNewUser } from "../../../redux/users-actions";
+import { setNotification } from "../../../redux/notification-actions";
 
 
 const AddUser = (props) => {
