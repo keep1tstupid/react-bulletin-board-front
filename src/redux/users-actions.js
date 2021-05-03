@@ -9,8 +9,15 @@ export const addFetchedUsers = (data) => ({
   data: data,
 })
 
-// action to add new item
 export const addNewUser = (data) => ({
   type: 'ADD_NEW_USER',
   data: data,
 })
+
+export const editUser = (data) => ({
+  type: 'EDIT_USER',
+  data: data,
+})
+
+// add action for inform user saga
+

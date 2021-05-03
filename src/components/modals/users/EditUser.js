@@ -1,14 +1,18 @@
 import React, { useState } from 'react';
 import {Modal, Form, Button, ModalBody} from 'react-bootstrap';
 import { connect, useDispatch } from "react-redux";
+import {editUser} from "../../../redux/users-actions";
+import {setNotification} from "../../../redux/notification-actions";
 
 
 const EditUser = (props) => {
+  const dispatch = useDispatch();
   const INITIAL_STATE = {
-    username: "",
-    password: "",
-    email: "",
-    role: "",
+    id: props.userBeingEdited.id,
+    username: props.userBeingEdited.username,
+    password: props.userBeingEdited.password,
+    email: props.userBeingEdited.email,
+    role: props.userBeingEdited.role,
   }
 
   const [user, setUser] = useState(INITIAL_STATE);
@@ -16,7 +20,12 @@ const EditUser = (props) => {
   const [show, setShow] = useState(false);
   const handleShow = () => setShow(true);
   const handleClose = () => setShow(false);
-  const handleSubmit = (event) => {}
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    dispatch(editUser(user));
+    dispatch(setNotification({variant: 'success', msg: 'user information is updated'}));
+    handleClose();
+  }
 
   const inputChanged = (event) => {
     setUser({...user, [event.target.name]: event.target.value});
@@ -51,8 +60,29 @@ const EditUser = (props) => {
                 required
               />
             </Form.Group>
+            <Form.Group controlId='formTitle'>
+              <Form.Label>Email: </Form.Label>
+              <Form.Control
+                type='text'
+                name='email'
+                placeholder='Enter email'
+                value={user.email}
+                onChange={inputChanged}
+                required
+              />
+            </Form.Group>
+            <Form.Group controlId='formTitle'>
+              <Form.Label>Change password: </Form.Label>
+              <Form.Control
+                type='text'
+                name='password'
+                placeholder='New password'
+                value=""
+                onChange={inputChanged}
+              />
+            </Form.Group>
 
-            <Button type='submit'> Send to moderation / Update </Button> {' '}
+            <Button type='submit'> Update </Button> {' '}
             <Button variant='outline-secondary' onClick={handleClose}> Cancel </Button>
           </Form>
         </Modal.Body>

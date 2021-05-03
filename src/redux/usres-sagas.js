@@ -3,6 +3,7 @@ import http from "../http-common";
 import {addFetchedUsers} from "./users-actions";
 import {setNotification} from "./notification-actions";
 import {fetchAllUsers as fetchAllUsersAction} from "./users-actions";
+import {addFile} from "./items-actions";
 
 function* fetchAllUsers() {
   try {
@@ -30,7 +31,23 @@ function* addNewUser(action) {
   }
 }
 
+function* informUser(action) {}
+
+function* editUser(action) {
+  // console.log("data in saga: ", action);
+  try {
+    const url = "/api/users/" + action.data.id;
+    const response = yield call(http.put, url, action.data);
+    console.log("response on editing user:", response);
+    // inform user here if everything is fine
+    yield put(fetchAllUsersAction());
+  } catch (err) {
+    console.error(err);
+  }
+}
+
 export default function* mainSaga() {
   yield takeEvery('FETCH_ALL_USERS', fetchAllUsers);
   yield takeEvery('ADD_NEW_USER', addNewUser);
+  yield takeEvery('EDIT_USER', editUser);
 }

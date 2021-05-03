@@ -1,6 +1,7 @@
 import React from 'react';
 import { Table, Container } from 'react-bootstrap';
 import { connect } from 'react-redux';
+import EditUser from "./modals/users/EditUser";
 
 const UserList = (props) => {
   const users = props.users || [];
@@ -24,7 +25,7 @@ const UserList = (props) => {
                   <td> {user.username} </td>
                   <td> {user.role} </td>
                   <td> {user.email} </td>
-                  <td> </td>
+                  <td> <EditUser userId={user.id} /> </td>
                 </tr>
               )}
             )}
