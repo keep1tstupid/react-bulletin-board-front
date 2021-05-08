@@ -20,4 +20,10 @@ export const editUser = (data) => ({
 })
 
 // add action for inform user saga
+export const informUser = (data) => ({
+    type: 'INFORM_USER',
+    data: data,
+  }
+
+)
 

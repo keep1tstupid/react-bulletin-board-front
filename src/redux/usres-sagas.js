@@ -2,7 +2,7 @@ import { call, put, takeEvery } from 'redux-saga/effects';
 import http from "../http-common";
 import {addFetchedUsers} from "./users-actions";
 import {setNotification} from "./notification-actions";
-import {fetchAllUsers as fetchAllUsersAction} from "./users-actions";
+import {fetchAllUsers as fetchAllUsersAction, informUser as informUserAction} from "./users-actions";
 import {addFile} from "./items-actions";
 
 function* fetchAllUsers() {
@@ -31,7 +31,13 @@ function* addNewUser(action) {
   }
 }
 
-function* informUser(action) {}
+function* informUser(action) {
+  try {
+    yield call(http.post, "/api/send-email", action.data.userData);
+  } catch (err) {
+    console.error(err);
+  }
+}
 
 function* editUser(action) {
   // console.log("data in saga: ", action);
@@ -39,7 +45,8 @@ function* editUser(action) {
     const url = "/api/users/" + action.data.id;
     const response = yield call(http.put, url, action.data);
     console.log("response on editing user:", response);
-    // inform user here if everything is fine
+    // inform user here
+    yield put(informUserAction({ userData: action.data }));
     yield put(fetchAllUsersAction());
   } catch (err) {
     console.error(err);
@@ -50,4 +57,5 @@ export default function* mainSaga() {
   yield takeEvery('FETCH_ALL_USERS', fetchAllUsers);
   yield takeEvery('ADD_NEW_USER', addNewUser);
   yield takeEvery('EDIT_USER', editUser);
+  yield takeEvery('INFORM_USER', informUser);
 }

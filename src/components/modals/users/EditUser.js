@@ -77,7 +77,7 @@ const EditUser = (props) => {
                 type='text'
                 name='password'
                 placeholder='New password'
-                value=""
+                value={user.password}
                 onChange={inputChanged}
               />
             </Form.Group>
