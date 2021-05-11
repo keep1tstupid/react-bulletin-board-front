@@ -54,9 +54,18 @@ function* editUser(action) {
   }
 }
 
+function* deleteUser(action) {
+  try {
+    // delete here
+  } catch (err) {
+    console.log(err);
+  }
+}
+
 export default function* mainSaga() {
   yield takeEvery('FETCH_ALL_USERS', fetchAllUsers);
   yield takeEvery('ADD_NEW_USER', addNewUser);
   yield takeEvery('EDIT_USER', editUser);
+  yield takeEvery('DEL_USER', deleteUser);
   yield takeEvery('INFORM_USER', informUser);
 }

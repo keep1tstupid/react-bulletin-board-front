@@ -7,6 +7,10 @@ const DeleteUser = (props) => {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  const dispatch = useDispatch();
+  const handleDelete = () => {
+
+  }
 
   return (
     <>
@@ -14,7 +18,25 @@ const DeleteUser = (props) => {
         Del
       </Button>
 
-      <Modal></Modal>
+      <Modal
+        show={show}
+        aria-labelledby='contained-modal-title-vcenter'
+      >
+        <Modal.Header>
+          <Modal.Title>Delete User</Modal.Title>
+        </Modal.Header>
+        <ModalBody>
+          <h4> You are going to delete user: {props.userBeingDeleted.username}</h4>
+        </ModalBody>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Cancel
+          </Button>
+          <Button variant="primary" onClick={handleDelete}>
+            Confirm
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </>
   );
 }

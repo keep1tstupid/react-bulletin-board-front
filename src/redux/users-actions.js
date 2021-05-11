@@ -19,7 +19,11 @@ export const editUser = (data) => ({
   data: data,
 })
 
-// add action for inform user saga
+export const delUser = (data) => ({
+  type: 'DEL_USER',
+  data: data,
+})
+
 export const informUser = (data) => ({
     type: 'INFORM_USER',
     data: data,
