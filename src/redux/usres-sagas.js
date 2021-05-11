@@ -56,7 +56,9 @@ function* editUser(action) {
 
 function* deleteUser(action) {
   try {
-    // delete here
+    const url = "/api/users/" + action.data.id;
+    yield call(http.delete, url, action.data);
+    yield put(fetchAllUsersAction());
   } catch (err) {
     console.log(err);
   }

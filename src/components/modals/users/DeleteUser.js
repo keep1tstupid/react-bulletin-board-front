@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import {Modal, Form, Button, ModalBody} from 'react-bootstrap';
 import { connect, useDispatch } from "react-redux";
 import {setNotification} from "../../../redux/notification-actions";
+import {delUser} from "../../../redux/users-actions";
 
 const DeleteUser = (props) => {
   const [show, setShow] = useState(false);
@@ -9,7 +10,9 @@ const DeleteUser = (props) => {
   const handleShow = () => setShow(true);
   const dispatch = useDispatch();
   const handleDelete = () => {
-
+    dispatch(delUser(props.userBeingDeleted));
+    dispatch(setNotification({variant: 'success', msg: 'user is deleted'}));
+    handleClose();
   }
 
   return (
