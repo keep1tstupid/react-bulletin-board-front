@@ -3,7 +3,7 @@ import http from "../http-common";
 import {addFetchedUsers} from "./users-actions";
 import {setNotification} from "./notification-actions";
 import {fetchAllUsers as fetchAllUsersAction, informUser as informUserAction} from "./users-actions";
-import {addFile} from "./items-actions";
+
 
 function* fetchAllUsers() {
   try {
@@ -25,6 +25,7 @@ function* addNewUser(action) {
   try {
     yield call(http.post, "/api/users", action.data);
     yield put(setNotification({variant: 'success', msg: 'user is added'}))
+    yield put(informUserAction({ userData: action.data }));
     yield put(fetchAllUsersAction());
   } catch (err) {
     console.error(err);
