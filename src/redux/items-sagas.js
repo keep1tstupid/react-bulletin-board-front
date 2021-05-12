@@ -3,26 +3,23 @@ import http from "../http-common";
 import { addFetchedItems, addFile, fetchAllItems as fetchAllItemsAction } from './items-actions';
 import {setNotification} from "./notification-actions";
 
-// saga for all items and attachments
+// saga for all items, types and attachments
 function* fetchAllItems() {
     try {
       const items = yield call(http.get, '/api/items');
       const files = yield call(http.get, '/api/files');
       const types = yield call(http.get, '/api/types');
-
       const result  = {
         items: items.data,
         files: files.data,
         types: types.data,
       }
-
       yield put(addFetchedItems(result));
     } catch (err) {
       console.error(err);
     }
 }
 
-// saga to add file
 function* uploadFile(action) {
   console.log("I tried to add: ", action.data.file, " for ", action.data.id);
   try {
@@ -33,15 +30,14 @@ function* uploadFile(action) {
     yield call(http.post, "/api/upload", data)
     // console.log("I tried to add: ", data);
   } catch (err) {
-    // console.error(err);
+    console.error(err);
     yield put(setNotification({
       variant: 'warning',
-      msg: 'your item is sent for moderation now without attachment!'
+      msg: 'your item is sent for moderation now without attachment!',
     }))
   }
 }
 
-// saga to add new item
 function* addNewItem(action) {
   //console.log("action file = ", action.data.attachmentFile);
   try {
@@ -63,7 +59,6 @@ function* addNewItem(action) {
   }
 }
 
-// saga to delete item
 function* deleteItem(action) {
   try {
     const url = "/api/items/" + action.data.id;
@@ -74,7 +69,6 @@ function* deleteItem(action) {
   }
 }
 
-// saga to edit item
 function* editItem(action) {
   try {
     const url = "/api/items/" + action.data.id;

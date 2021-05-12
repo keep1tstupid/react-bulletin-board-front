@@ -28,6 +28,5 @@ export const informUser = (data) => ({
     type: 'INFORM_USER',
     data: data,
   }
-
 )
 

@@ -10,7 +10,6 @@ const EditUser = (props) => {
   const INITIAL_STATE = {
     id: props.userBeingEdited.id,
     username: props.userBeingEdited.username,
-    password: props.userBeingEdited.password,
     email: props.userBeingEdited.email,
     role: props.userBeingEdited.role,
   }
@@ -71,15 +70,17 @@ const EditUser = (props) => {
                 required
               />
             </Form.Group>
-            <Form.Group controlId='formTitle'>
-              <Form.Label>Change password: </Form.Label>
+
+            <Form.Group controlId='roleSelector'>
+              <Form.Label>Role: </Form.Label>
               <Form.Control
-                type='text'
-                name='password'
-                placeholder='New password'
-                value={user.password}
+                as='select'
+                name='role'
                 onChange={inputChanged}
-              />
+                defaultValue={user.role}
+              >
+                {props.roles.map((role, index) => <option key={index}> {role} </option>) }
+              </Form.Control>
             </Form.Group>
 
             <Button type='submit'> Update </Button> {' '}

@@ -25,7 +25,7 @@ function* addNewUser(action) {
   try {
     yield call(http.post, "/api/users", action.data);
     yield put(setNotification({variant: 'success', msg: 'user is added'}))
-    yield put(informUserAction({ userData: action.data }));
+    yield put(informUserAction({ userData: action.data, eventType: 'newUser' }));
     yield put(fetchAllUsersAction());
   } catch (err) {
     console.error(err);
@@ -34,7 +34,8 @@ function* addNewUser(action) {
 
 function* informUser(action) {
   try {
-    yield call(http.post, "/api/send-email", action.data.userData);
+    const url = "/api/send-email/" + action.data.eventType;
+    yield call(http.post, url, action.data.userData);
   } catch (err) {
     console.error(err);
   }
@@ -47,7 +48,7 @@ function* editUser(action) {
     const response = yield call(http.put, url, action.data);
     console.log("response on editing user:", response);
     // inform user here
-    yield put(informUserAction({ userData: action.data }));
+    yield put(informUserAction({ userData: action.data, eventType: 'updUser' }));
     yield put(fetchAllUsersAction());
   } catch (err) {
     console.error(err);
@@ -58,6 +59,7 @@ function* deleteUser(action) {
   try {
     const url = "/api/users/" + action.data.id;
     yield call(http.delete, url, action.data);
+    yield put(informUserAction({ userData: action.data, eventType: 'delUser' }));
     yield put(fetchAllUsersAction());
   } catch (err) {
     console.log(err);
