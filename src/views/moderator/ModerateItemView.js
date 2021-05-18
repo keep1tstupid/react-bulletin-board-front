@@ -26,12 +26,12 @@ const ModerateItemView = (props) => {
     <>
       <Header />
       <Container>
-        {showAlert && (
+        { showAlert ? (
           <AlertMsg
             variant={props.notification.variant}
             msg={props.notification.msg}
           />
-        )}
+        ) : null }
         <Container>
           <Container className={'mt-3'}>
             <h3>Items to review: </h3>

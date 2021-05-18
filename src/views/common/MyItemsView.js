@@ -21,12 +21,12 @@ const MyItemsView = (props) => {
     <>
       <Header />
       <Container>
-        {showAlert && (
+        { showAlert ? (
           <AlertMsg
             variant={props.notification.variant}
             msg={props.notification.msg}
           />
-        )}
+        ) : null }
         <Container className={'mt-3'}>
           <h3>My items: </h3>
           <UserItemList />

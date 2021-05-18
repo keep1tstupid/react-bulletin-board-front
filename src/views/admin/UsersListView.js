@@ -23,12 +23,12 @@ const UsersListView = (props) => {
     <>
       <Header />
       <Container className={'mt-3'}>
-        {showAlert && (
+        { showAlert ? (
           <AlertMsg
             variant={props.notification.variant}
             msg={props.notification.msg}
           />
-        )}
+        ) : null }
         <AddUser />
         <h4>Users: </h4>
         <UserList />

@@ -22,12 +22,12 @@ const HomeView = (props) => {
     <>
       <Header />
       <Container>
-        {showAlert && (
+        { showAlert ? (
             <AlertMsg
               variant={props.notification.variant}
               msg={props.notification.msg}
             />
-        )}
+        ) : null }
         <AddItem />
         <ItemTabs />
       </Container>
